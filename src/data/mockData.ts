@@ -93,12 +93,12 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
       en: 'Complete wall chase groove cutting, Polycab/Finolex FR wire pulling, and Anchor Roma modular switchboard fitting for homes.',
     },
     fullDesc: {
-      mr: 'घरातील संपूर्ण सुरक्षित वायरिंग. प्रत्येक खोलीसाठी योग्य एमसीबी, सेफ अर्थिंग आणि मॉड्युलर स्विचेसचे नीटनेटके काम अगदी वाजवी स्थानिक दरात (फक्त ₹ ९० ते ₹ १२० प्रति पॉईंट) केले जाते.',
-      en: 'Complete safe residential wiring with dedicated circuit MCBs per room, RCCB earth leakage protection, and neat modular switch fitting at just ₹90-₹120/point.',
+      mr: 'घरातील संपूर्ण सुरक्षित वायरिंग. प्रत्येक खोलीसाठी योग्य एमसीबी, सेफ अर्थिंग आणि मॉड्युलर स्विचेसचे नीटनेटके काम अगदी वाजवी स्थानिक दरात (फक्त ₹ १२० ते ₹ १५० प्रति पॉईंट) केले जाते.',
+      en: 'Complete safe residential wiring with dedicated circuit MCBs per room, RCCB earth leakage protection, and neat modular switch fitting at just ₹120-₹150/point.',
     },
     startingPrice: {
-      mr: '₹ ९० / प्रति पॉईंट (कमी केलेला दर)',
-      en: '₹ 90 / per point (Lowered Rate)',
+      mr: '₹ १२० / प्रति पॉईंट',
+      en: '₹ 120 / per point',
     },
     estimatedDuration: {
       mr: '१ ते २ दिवस',
@@ -106,14 +106,14 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
     },
     keyFeatures: {
       mr: [
-        'फक्त ₹ ९० ते ₹ १२० प्रति पॉईंट अतिशय वाजवी मजुरी दर',
+        'फक्त ₹ १२० ते ₹ १५० प्रति पॉईंट अतिशय वाजवी मजुरी दर',
         'पॉलिकॅब (Polycab) व फिनोलेक्स (Finolex) ओरिजिनल कॉपर वायर्स',
         'अँकर रोमा (Anchor Roma) व लेग्रँड (Legrand) मॉड्युलर बोर्ड',
         'हॅवेल्स (Havells) सेफ एमसीबी बॉक्स जोडणी',
         'रासायनिक अर्थिंग (Earth Pit) सेफ फिटिंग',
       ],
       en: [
-        'Affordable ₹ 90 to ₹ 120 per point labor rate',
+        'Affordable ₹ 120 to ₹ 150 per point labor rate',
         'Genuine Polycab & Finolex copper wiring',
         'Anchor Roma & Legrand modular switchboard fitting',
         'Havells MCB distribution box setup',
@@ -135,12 +135,12 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
       en: 'Ceiling fan installation, cooler motor service, bathroom geyser fitting, and switch/socket repairs directly at your home.',
     },
     fullDesc: {
-      mr: 'उपकरणे घेऊन कुठेही जाण्याची गरज नाही. एक फोन करा, आम्ही घरी येऊन फॅन (फक्त ₹ ६०), कुलर, गिझर (फक्त ₹ १५०) किंवा खराब झालेले स्विचेस तात्काळ नीट करून देतो.',
-      en: 'No need to carry appliances outside. We visit your doorstep across Beed to install ceiling fans (from ₹60), geysers (from ₹150), and fix burnt switches.',
+      mr: 'उपकरणे घेऊन कुठेही जाण्याची गरज नाही. एक फोन करा, आम्ही घरी येऊन फॅन (फक्त ₹ १००), कुलर, गिझर (फक्त ₹ २००) किंवा खराब झालेले स्विचेस तात्काळ नीट करून देतो.',
+      en: 'No need to carry appliances outside. We visit your doorstep across Beed to install ceiling fans (from ₹100), geysers (from ₹200), and fix burnt switches.',
     },
     startingPrice: {
-      mr: '₹ ६० पासून',
-      en: 'From ₹ 60',
+      mr: '₹ १०० पासून',
+      en: 'From ₹ 100',
     },
     estimatedDuration: {
       mr: '२० ते ४५ मिनिटे (घरी प्रत्यक्ष)',
@@ -148,16 +148,16 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
     },
     keyFeatures: {
       mr: [
-        'सीलिंग फॅन फिटिंग फक्त ₹ ६० ते ₹ ८०',
-        'बाथरूम गिझर / हिटर फिटिंग फक्त ₹ १५० ते ₹ २००',
-        'साधा किंवा मॉड्युलर स्विच बदलणे फक्त ₹ ३० ते ₹ ५०',
+        'सीलिंग फॅन फिटिंग फक्त ₹ १०० ते ₹ १२०',
+        'बाथरूम गिझर / हिटर फिटिंग फक्त ₹ २०० ते ₹ २५०',
+        'साधा किंवा मॉड्युलर स्विच बदलणे फक्त ₹ ५० ते ₹ ७०',
         'कुलर मोटर कॅपॅसिटर तपासणी व वायरिंग दुरुस्ती',
         'घरी येऊन त्वरित आणि खात्रीशीर काम',
       ],
       en: [
-        'Ceiling fan installation only ₹ 60 - ₹ 80',
-        'Bathroom water geyser fitting just ₹ 150 - ₹ 200',
-        'Single switch or socket replacement ₹ 30 - ₹ 50',
+        'Ceiling fan installation only ₹ 100 - ₹ 120',
+        'Bathroom water geyser fitting just ₹ 200 - ₹ 250',
+        'Single switch or socket replacement ₹ 50 - ₹ 70',
         'Cooler motor capacitor check & wiring fix',
         'Quick home doorstep visit in Beed',
       ],
@@ -177,12 +177,12 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
       en: 'Luminous, Microtek or Exide home inverter and battery installation with neat changeover wiring and load separation.',
     },
     fullDesc: {
-      mr: 'वीज गेल्यावर घरातील महत्त्वाचे पंखे, लाईट्स व टीव्ही अखंड चालण्यासाठी योग्य लोड सेपरेशन. इन्व्हर्टर बिघडल्यास घर अंधारात राहू नये म्हणून बायपास चेंजओव्हर बसवून देतो. फक्त ₹ २०० ते ₹ २८० मजुरी.',
-      en: 'Neat inverter connection so your home fans and lights stay on during local power cuts. Manual bypass rotary switch installed safely at just ₹200-₹280 labor.',
+      mr: 'वीज गेल्यावर घरातील महत्त्वाचे पंखे, लाईट्स व टीव्ही अखंड चालण्यासाठी योग्य लोड सेपरेशन. इन्व्हर्टर बिघडल्यास घर अंधारात राहू नये म्हणून बायपास चेंजओव्हर बसवून देतो. फक्त ₹ ३०० ते ₹ ४०० मजुरी.',
+      en: 'Neat inverter connection so your home fans and lights stay on during local power cuts. Manual bypass rotary switch installed safely at just ₹300-₹400 labor.',
     },
     startingPrice: {
-      mr: '₹ २०० पासून (कमी केलेला दर)',
-      en: 'From ₹ 200 (Lowered Rate)',
+      mr: '₹ ३०० पासून',
+      en: 'From ₹ 300',
     },
     estimatedDuration: {
       mr: '१ ते २ तास',
@@ -190,14 +190,14 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
     },
     keyFeatures: {
       mr: [
-        'इन्व्हर्टर व बॅटरी संपूर्ण फिटिंग फक्त ₹ २०० - ₹ २८०',
+        'इन्व्हर्टर व बॅटरी संपूर्ण फिटिंग फक्त ₹ ३०० - ₹ ४००',
         'फक्त आवश्यक लोडवर कनेक्शन (बॅटरी जास्त वेळ टिकते)',
         'मॅन्युअल बायपास चेंजओव्हर स्विच फिटिंग',
         'हेवी कॉपर डीसी केबल व लक्स फिटिंग',
         'सुरक्षित व नीटनेटके घरगुती वायरिंग',
       ],
       en: [
-        'Inverter & battery setup only ₹ 200 - ₹ 280',
+        'Inverter & battery setup only ₹ 300 - ₹ 400',
         'Smart load separation for maximum battery backup',
         'Manual bypass changeover switch installation',
         'Heavy-duty copper lugs and battery cables',
@@ -205,7 +205,7 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
       ],
     },
     iconName: 'BatteryCharging',
-    popularBadge: { mr: 'कमी मजुरी', en: 'Low Labor' },
+    popularBadge: { mr: 'वाजवी मजुरी', en: 'Affordable Labor' },
   },
   {
     id: 'water-motor',
@@ -223,8 +223,8 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
       en: 'Safe connection of residential water pumps, starters, and overhead tank auto cut-off float switches to prevent water overflow and dry running.',
     },
     startingPrice: {
-      mr: '₹ १५० पासून',
-      en: 'From ₹ 150',
+      mr: '₹ २०० पासून',
+      en: 'From ₹ 200',
     },
     estimatedDuration: {
       mr: '३० ते ४५ मिनिटे',
@@ -232,14 +232,14 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
     },
     keyFeatures: {
       mr: [
-        'घरगुती पाण्याची मोटर फिटिंग फक्त ₹ १५० ते ₹ १८०',
+        'घरगुती पाण्याची मोटर फिटिंग फक्त ₹ २०० ते ₹ २५०',
         'ऑटोमॅटिक फ्लोट स्विच फिटिंग (टाकी भरल्यास आपोआप बंद)',
         'कॅपॅसिटर बदलणे व स्टार्टर वायरिंग दुरुस्ती',
         'वॉटरप्रूफ वायर जॉईंट व अर्थिंग जोडणी',
         'घरी येऊन त्वरित सेवा',
       ],
       en: [
-        'Home water motor fitting just ₹ 150 - ₹ 180',
+        'Home water motor fitting just ₹ 200 - ₹ 250',
         'Automatic float switch fitting for overflow prevention',
         'Starter capacitor test & replacement',
         'Waterproof wire joint and shockproof earthing',
@@ -264,8 +264,8 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
       en: 'Quick doorstep visit across Beed to isolate electrical faults, replace tripped breakers, and fix wire leakage safely.',
     },
     startingPrice: {
-      mr: '₹ ८० (व्हिजिट फी / Visit Fee)',
-      en: '₹ 80 (Inspection Visit Fee)',
+      mr: '₹ १५० (व्हिजिट फी / Visit Fee)',
+      en: '₹ 150 (Inspection Visit Fee)',
     },
     estimatedDuration: {
       mr: '२० ते ३० मिनिटे',
@@ -273,14 +273,14 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
     },
     keyFeatures: {
       mr: [
-        'घरपोच व्हिजिट फी फक्त ₹ ८० ते ₹ १००',
+        'घरपोच व्हिजिट फी फक्त ₹ १५०',
         'शॉर्ट सर्किट फॉल्ट शोधून तात्काळ वीज पूर्ववत करणे',
         'सतत पडणारा किंवा खराब झालेला एमसीबी बदलणे',
         'भिंतीतील वीज गळती (Earth Leakage) रोखणे',
         'इमर्जन्सीमध्ये बीड शहरात तातडीने घरपोच धाव',
       ],
       en: [
-        'Doorstep inspection visit fee just ₹ 80 - ₹ 100',
+        'Doorstep inspection visit fee just ₹ 150',
         'Quick fault location and safe isolation',
         'Replacement of worn or tripping MCB breakers',
         'Earth leakage rectification to eliminate wall shocks',
@@ -305,8 +305,8 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
       en: 'Proper earth pit installation using bentonite/chemical compound and heavy copper wire ensuring zero leakage voltage in all home appliances.',
     },
     startingPrice: {
-      mr: '₹ ४५० पासून (मजुरी)',
-      en: 'From ₹ 450 (Labor)',
+      mr: '₹ ५५० पासून (मजुरी)',
+      en: 'From ₹ 550 (Labor)',
     },
     estimatedDuration: {
       mr: '२ ते ३ तास',
@@ -314,14 +314,14 @@ export const RESIDENTIAL_SERVICES_DATA: LocalizedService[] = [
     },
     keyFeatures: {
       mr: [
-        'घरगुती अर्थिंग मजुरी फक्त ₹ ४५० ते ₹ ६००',
+        'घरगुती अर्थिंग मजुरी फक्त ₹ ५५० ते ₹ ७५०',
         'घरातील सर्व सॉकेट्सचे अर्थिंग टेस्टरने चेकिंग',
         'फ्रिज, कुलर व गिझरचा शॉक पूर्णपणे बंद',
         'रासायनिक अर्थिंग पावडर व कॉपर पाईप जोडणी',
         'दीर्घकाळ टिकणारे खात्रीशीर काम',
       ],
       en: [
-        'Home earthing labor just ₹ 450 - ₹ 600',
+        'Home earthing labor just ₹ 550 - ₹ 750',
         'Earth testing across all home sockets',
         'Eliminates tingling shocks from appliances',
         'Chemical compound and copper grounding',
@@ -428,12 +428,12 @@ export const RESIDENTIAL_PROJECTS_DATA: LocalizedProject[] = [
       en: 'Bathroom only had an ordinary 6A socket which could overheat and melt if a 2000W geyser was plugged in.',
     },
     solution: {
-      mr: 'स्वतंत्र ४ स्क्वेअर मिमी कॉपर वायर ओढून १६A अँकर रोमा पॉवर सॉकेट बसवला. फॅन ₹ ६० व गिझर ₹ १५० अशा रास्त दरात काम केले.',
-      en: 'Pulled a dedicated 4 sq. mm wire for a 16A power socket and safely mounted the geyser at lowered rates.',
+      mr: 'स्वतंत्र ४ स्क्वेअर मिमी कॉपर वायर ओढून १६A अँकर रोमा पॉवर सॉकेट बसवला. फॅन ₹ १०० व गिझर ₹ २०० अशा वाजवी दरात काम केले.',
+      en: 'Pulled a dedicated 4 sq. mm wire for a 16A power socket and safely mounted the geyser at fair rates (Fan ₹100, Geyser ₹200).',
     },
     specifications: [
-      { label: { mr: 'फॅन फिटिंग दर', en: 'Fan Rate' }, value: { mr: '₹ ६० / फॅन', en: '₹ 60 / Fan' } },
-      { label: { mr: 'गिझर फिटिंग दर', en: 'Geyser Rate' }, value: { mr: '₹ १५० फक्त', en: '₹ 150 Only' } },
+      { label: { mr: 'फॅन फिटिंग दर', en: 'Fan Rate' }, value: { mr: '₹ १०० / फॅन', en: '₹ 100 / Fan' } },
+      { label: { mr: 'गिझर फिटिंग दर', en: 'Geyser Rate' }, value: { mr: '₹ २०० फक्त', en: '₹ 200 Only' } },
       { label: { mr: 'पॉवर सॉकेट', en: 'Power Socket' }, value: { mr: '16A Anchor Roma Heavy', en: '16A Anchor Roma Heavy' } },
       { label: { mr: 'सेवा', en: 'Service' }, value: { mr: '१००% घरपोच सेवा', en: '100% Doorstep Visit' } },
     ],
@@ -498,11 +498,11 @@ export const RESIDENTIAL_PROJECTS_DATA: LocalizedProject[] = [
       en: 'Elderly couple was in the dark in the evening and needed fast emergency help.',
     },
     solution: {
-      mr: '२५ मिनिटांत घरी पोहोचलो, फॉल्ट सोडवला आणि फक्त ₹ ८० व्हिजिट फी घेतली.',
-      en: 'Reached within 25 minutes, isolated and repaired the burnt circuit safely, charged just ₹80 visit fee.',
+      mr: '२५ मिनिटांत घरी पोहोचलो, फॉल्ट सोडवला आणि फक्त ₹ १५० व्हिजिट फी घेतली.',
+      en: 'Reached within 25 minutes, isolated and repaired the burnt circuit safely, charged just ₹150 visit fee.',
     },
     specifications: [
-      { label: { mr: 'व्हिजिट फी', en: 'Visit Fee' }, value: { mr: '₹ ८० फक्त (कमी दर)', en: '₹ 80 Only (Lowered)' } },
+      { label: { mr: 'व्हिजिट फी', en: 'Visit Fee' }, value: { mr: '₹ १५० फक्त (निश्चित दर)', en: '₹ 150 Only (Fixed Fee)' } },
       { label: { mr: 'पोहोचण्याची वेळ', en: 'Response' }, value: { mr: '२५ मिनिटांत घरी हजर', en: 'Within 25 Minutes' } },
       { label: { mr: 'फॉल्ट प्रकार', en: 'Fault Type' }, value: { mr: 'न्यूट्रल शॉर्ट सर्किट', en: 'Neutral Short Circuit' } },
       { label: { mr: 'सुरक्षितता', en: 'Result' }, value: { mr: 'वीज पूर्णपणे पूर्ववत', en: 'Full Power Restored' } },
@@ -533,11 +533,11 @@ export const RESIDENTIAL_PROJECTS_DATA: LocalizedProject[] = [
       en: 'Young children in the house created severe risk of accidental electric shock.',
     },
     solution: {
-      mr: 'सुरक्षित केमिकल अर्थिंग खड्डा केला, सर्व सॉकेट्स तपासले, शॉक पूर्णपणे बंद झाला. मजुरी फक्त ₹ ४५० घेतली.',
-      en: 'Completed proper chemical earth pit and verified earth continuity across all rooms at only ₹450 labor.',
+      mr: 'सुरक्षित केमिकल अर्थिंग खड्डा केला, सर्व सॉकेट्स तपासले, शॉक पूर्णपणे बंद झाला. मजुरी फक्त ₹ ५५० घेतली.',
+      en: 'Completed proper chemical earth pit and verified earth continuity across all rooms at only ₹550 labor.',
     },
     specifications: [
-      { label: { mr: 'अर्थिंग मजुरी', en: 'Earthing Labor' }, value: { mr: '₹ ४५० फक्त', en: '₹ 450 Only' } },
+      { label: { mr: 'अर्थिंग मजुरी', en: 'Earthing Labor' }, value: { mr: '₹ ५५० फक्त', en: '₹ 550 Only' } },
       { label: { mr: 'प्रकार', en: 'Type' }, value: { mr: 'केमिकल कंपाऊंड अर्थिंग', en: 'Chemical Compound' } },
       { label: { mr: 'अर्थ टेस्टर रिडिंग', en: 'Earth Resistance' }, value: { mr: '< २ ओहम (अत्यंत सुरक्षित)', en: '< 2 Ohms (Safe)' } },
       { label: { mr: 'सुरक्षितता', en: 'Safety' }, value: { mr: 'शॉक पूर्णपणे बंद', en: 'Zero Shock Risk' } },
@@ -556,8 +556,8 @@ export const RESIDENTIAL_REVIEWS_DATA: LocalizedReview[] = [
     projectType: { mr: 'घरगुती कन्सिल्ड वायरिंग व मॉड्युलर बोर्ड', en: 'Home Concealed Wiring & Modular DB' },
     date: { mr: 'मार्च २०२६', en: 'March 2026' },
     content: {
-      mr: 'नवीन खोलीच्या वायरिंगसाठी श्री सद्गुरुंना बोलावले होते. बाजारातील इतर लोकांपेक्षा खूप कमी आणि वाजवी दरात (फक्त ₹ ९० प्रति पॉईंट) काम करून दिले. स्वतः घरी येऊन अतिशय नीटनेटके काम केले.',
-      en: 'Called Shree Sadguru for wiring our new room. Charged very fair local rates (just ₹90 per point) compared to others. Visited our home on time and did very clean work.',
+      mr: 'नवीन खोलीच्या वायरिंगसाठी श्री सद्गुरुंना बोलावले होते. बाजारातील इतर लोकांपेक्षा खूप वाजवी दरात (फक्त ₹ १२० प्रति पॉईंट) काम करून दिले. स्वतः घरी येऊन अतिशय नीटनेटके काम केले.',
+      en: 'Called Shree Sadguru for wiring our new room. Charged very fair local rates (just ₹120 per point) compared to others. Visited our home on time and did very clean work.',
     },
   },
   {
@@ -569,8 +569,8 @@ export const RESIDENTIAL_REVIEWS_DATA: LocalizedReview[] = [
     projectType: { mr: 'घरपोच फॅन व इन्व्हर्टर फिटिंग', en: 'Doorstep Fan & Inverter Fitting' },
     date: { mr: 'मार्च २०२६', en: 'March 2026' },
     content: {
-      mr: 'घरात २ पंखे आणि इन्व्हर्टर बसवायचे होते. कुठेही बाहेर दुकानात जाण्याची गरज पडली नाही. त्यांनी घरी येऊन सर्व काम व्यवस्थित केले आणि दरही अगदी परवडणारे (फॅन फक्त ₹६०, इन्व्हर्टर ₹२००) घेतले.',
-      en: 'Needed to install 2 ceiling fans and an inverter. Did not have to carry anything anywhere. They came home and did everything neatly at very affordable rates (Fan ₹60, Inverter ₹200).',
+      mr: 'घरात २ पंखे आणि इन्व्हर्टर बसवायचे होते. कुठेही बाहेर दुकानात जाण्याची गरज पडली नाही. त्यांनी घरी येऊन सर्व काम व्यवस्थित केले आणि दरही अगदी परवडणारे (फॅन ₹१००, इन्व्हर्टर ₹३००) घेतले.',
+      en: 'Needed to install 2 ceiling fans and an inverter. Did not have to carry anything anywhere. They came home and did everything neatly at very affordable rates (Fan ₹100, Inverter ₹300).',
     },
   },
   {
@@ -582,8 +582,8 @@ export const RESIDENTIAL_REVIEWS_DATA: LocalizedReview[] = [
     projectType: { mr: 'शॉर्ट सर्किट दुरुस्ती व गिझर फिटिंग', en: 'Short Circuit Repair & Geyser Fitting' },
     date: { mr: 'फेब्रुवारी २०२६', en: 'February 2026' },
     content: {
-      mr: 'रात्री अचानक किचनमधील बोर्डातून धूर आला आणि वीज गेली. फोन केल्यावर २० मिनिटांत भाऊ घरी हजर झाले, जळकी वायर शोधून काढली आणि फक्त ₹८० व्हिजिट फी घेतली. प्रामाणिक माणूस!',
-      en: 'Smoke came from kitchen switchboard at night and power went out. The electrician arrived in 20 minutes, located the burnt wire, and charged just ₹80 visit fee. Very honest service!',
+      mr: 'रात्री अचानक किचनमधील बोर्डातून धूर आला आणि वीज गेली. फोन केल्यावर २० मिनिटांत भाऊ घरी हजर झाले, जळकी वायर शोधून काढली आणि फक्त ₹१५० व्हिजिट फी घेतली. प्रामाणिक माणूस!',
+      en: 'Smoke came from kitchen switchboard at night and power went out. The electrician arrived in 20 minutes, located the burnt wire, and charged just ₹150 visit fee. Very honest service!',
     },
   },
 ];
@@ -595,18 +595,18 @@ export const RESIDENTIAL_FAQ_DATA = [
       en: 'Do you only do doorstep home visits? Why no commercial work?',
     },
     a: {
-      mr: 'होय! आम्ही १००% फक्त घरगुती सेवा (Home Service Only) देतो. मोठी कमर्शियल कंत्राटे किंवा कारखान्यांची कामे आम्ही मुद्दाम घेत नाही, जेणेकरून बीड शहरातील सामान्य कुटुंबांना एका फोनवर, कमीत कमी खर्चात आणि वेळेवर घरबसल्या खात्रीशीर सेवा देता यावी.',
+      mr: 'होय! आम्ही १००% फक्त घरगुती सेवा (Home Service Only) देतो. मोठी कमर्शियल कंत्राटे किंवा कारखान्यांची कामे आम्ही मुद्दाम घेत नाही, जेणेकरून बीड शहरातील सामान्य कुटुंबांना एका फोनवर, वाजवी खर्चात आणि वेळेवर घरबसल्या खात्रीशीर सेवा देता यावी.',
       en: 'Yes! We focus 100% on residential homes. We purposely avoid large commercial or factory contracts so that local families in Beed receive prompt, budget-friendly doorstep service without delay.',
     },
   },
   {
     q: {
-      mr: 'तुमचे दर बाजारापेक्षा कमी का आहेत?',
+      mr: 'तुमचे दर बाजारापेक्षा वाजवी का आहेत?',
       en: 'Why are your rates so affordable compared to others?',
     },
     a: {
-      mr: 'आम्ही कोणतीही मोठी कॉर्पोरेट कंपनी नाही, आम्ही बीड शहरातील स्वतंत्र स्थानिक इलेक्ट्रिशियन आहोत. आमचा कोणताही अतिरिक्त ऑफिस खर्च नसून आम्ही थेट घरी येऊन काम करतो. त्यामुळे वाजवी मजुरी (उदा. फॅन फिटिंग ₹६०, स्विच बदलणे ₹३०) आकारून ग्राहकांचे पैसे वाचवतो.',
-      en: 'We are an independent local electrician in Beed, not an agency with heavy overheads. We work directly with homeowners and pass those savings straight to our customers.',
+      mr: 'आम्ही कोणतीही मोठी कॉर्पोरेट कंपनी नाही, आम्ही बीड शहरातील स्वतंत्र स्थानिक इलेक्ट्रिशियन आहोत. आमचा कोणताही अतिरिक्त ऑफिस खर्च नसून आम्ही थेट घरी येऊन काम करतो. त्यामुळे वाजवी मजुरी (उदा. फॅन फिटिंग ₹१००, स्विच बदलणे ₹५०, व्हिजिट फी ₹१५०) आकारून ग्राहकांचे पैसे वाचवतो.',
+      en: 'We are an independent local electrician in Beed, not an agency with heavy overheads. We work directly with homeowners and pass those savings straight to our customers (e.g. Fan fitting ₹100, switch ₹50, visit fee ₹150).',
     },
   },
   {
@@ -615,8 +615,8 @@ export const RESIDENTIAL_FAQ_DATA = [
       en: 'What are your home visit and inspection charges?',
     },
     a: {
-      mr: 'बीड शहरात घरपोच व्हिजिट फी फक्त ₹ ८० ते ₹ १०० आहे. जर काम मोठे असेल (उदा. पूर्ण वायरिंग किंवा इन्व्हर्टर फिटिंग), तर ही व्हिजिट फी मजुरीच्या बिलातच ॲडजस्ट केली जाते.',
-      en: 'Inspection visit fee within Beed city is just ₹ 80 to ₹ 100. For larger jobs like full wiring or inverter setup, this fee is adjusted directly into the final bill.',
+      mr: 'बीड शहरात घरपोच व्हिजिट फी फक्त ₹ १५० आहे. जर काम मोठे असेल (उदा. पूर्ण वायरिंग किंवा इन्व्हर्टर फिटिंग), तर ही व्हिजिट फी मजुरीच्या बिलातच ॲडजस्ट केली जाते.',
+      en: 'Inspection visit fee within Beed city is just ₹ 150. For larger jobs like full wiring or inverter setup, this fee is adjusted directly into the final bill.',
     },
   },
   {

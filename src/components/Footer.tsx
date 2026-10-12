@@ -48,22 +48,22 @@ export const Footer: React.FC<{ currentLang: Language }> = ({ currentLang }) => 
             <ul className="space-y-2">
               <li>
                 <a href="#services" className="hover:text-amber-400 transition-colors">
-                  {currentLang === 'mr' ? 'सीलिंग फॅन फिटिंग (₹६० पासून)' : 'Ceiling Fan Fitting (From ₹60)'}
+                  {currentLang === 'mr' ? 'सीलिंग फॅन फिटिंग (₹१०० पासून)' : 'Ceiling Fan Fitting (From ₹100)'}
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-amber-400 transition-colors">
-                  {currentLang === 'mr' ? 'घरगुती कन्सिल्ड पॉईंट वायरिंग (₹९०/पॉईंट)' : 'Concealed Point Wiring (₹90/pt)'}
+                  {currentLang === 'mr' ? 'घरगुती कन्सिल्ड पॉईंट वायरिंग (₹१२०/पॉईंट)' : 'Concealed Point Wiring (₹120/pt)'}
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-amber-400 transition-colors">
-                  {currentLang === 'mr' ? 'बाथरूम गिझर फिटिंग (₹१५०)' : 'Bathroom Geyser Fitting (₹150)'}
+                  {currentLang === 'mr' ? 'बाथरूम गिझर फिटिंग (₹२००)' : 'Bathroom Geyser Fitting (₹200)'}
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-amber-400 transition-colors">
-                  {currentLang === 'mr' ? 'इन्व्हर्टर व बॅटरी कनेक्शन (₹२००)' : 'Inverter & Battery Setup (₹200)'}
+                  {currentLang === 'mr' ? 'इन्व्हर्टर व बॅटरी कनेक्शन (₹३००)' : 'Inverter & Battery Setup (₹300)'}
                 </a>
               </li>
               <li>

@@ -74,8 +74,8 @@ export const CredentialsSection: React.FC<{ currentLang: Language }> = ({ curren
             </h3>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
               {currentLang === 'mr'
-                ? 'फॅन फिटिंग फक्त ₹६०, गिझर ₹१५० आणि व्हिजिट फी फक्त ₹८०. कामापूर्वी पारदर्शक दर.'
-                : 'Ceiling fans from ₹60, geysers ₹150, visit fee just ₹80. Completely upfront and transparent.'}
+                ? 'फॅन फिटिंग ₹१००, गिझर ₹२०० आणि व्हिजिट फी फक्त ₹१५०. कामापूर्वी पारदर्शक दर.'
+                : 'Ceiling fans from ₹100, geysers ₹200, visit fee just ₹150. Completely upfront and transparent.'}
             </p>
           </div>
 

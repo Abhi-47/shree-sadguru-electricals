@@ -31,45 +31,45 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
   const autoSwitchId = useId();
   const changeoverId = useId();
 
-  // Local lowered, affordable pricing engine for Beed market in INR (₹)
+  // Fair, realistic pricing engine for Beed home market in INR (₹)
   const calculateEstimate = () => {
-    let min = 80;
-    let max = 150;
+    let min = 150;
+    let max = 220;
 
     switch (selectedService) {
       case 'house-wiring':
-        // Affordable point wiring labor (₹90/pt)
-        min = workScale === 'minor' ? 180 : workScale === 'medium' ? 540 : 1200;
-        max = workScale === 'minor' ? 270 : workScale === 'medium' ? 850 : 1800;
+        // Point wiring labor (₹120 - ₹150/pt)
+        min = workScale === 'minor' ? 240 : workScale === 'medium' ? 720 : 1500;
+        max = workScale === 'minor' ? 360 : workScale === 'medium' ? 1100 : 2200;
         break;
       case 'home-repair':
-        // Fan/cooler/geyser fitting (Fan ₹60, geyser ₹150)
-        min = workScale === 'minor' ? 60 : workScale === 'medium' ? 150 : 300;
-        max = workScale === 'minor' ? 100 : workScale === 'medium' ? 220 : 450;
+        // Fan/cooler/geyser fitting (Fan ₹100, geyser ₹200)
+        min = workScale === 'minor' ? 100 : workScale === 'medium' ? 200 : 380;
+        max = workScale === 'minor' ? 140 : workScale === 'medium' ? 300 : 550;
         break;
       case 'inverter-battery':
-        // Inverter fitting labor (₹200 - ₹280)
-        min = workScale === 'minor' ? 200 : 280;
-        max = workScale === 'minor' ? 280 : 380;
+        // Inverter fitting labor (₹300 - ₹400)
+        min = workScale === 'minor' ? 300 : 400;
+        max = workScale === 'minor' ? 400 : 550;
         break;
       case 'water-motor':
-        // Home water motor & float switch (₹150)
-        min = workScale === 'minor' ? 150 : 250;
-        max = workScale === 'minor' ? 200 : 350;
+        // Home water motor & float switch (₹200 - ₹250)
+        min = workScale === 'minor' ? 200 : 300;
+        max = workScale === 'minor' ? 260 : 420;
         break;
       case 'fault-finding':
-        // Short circuit diagnostic visit (₹80 - ₹120)
-        min = 80;
-        max = 120;
+        // Short circuit diagnostic visit (₹150 visit fee included)
+        min = 150;
+        max = 200;
         break;
       case 'earthing':
-        // Home safe earthing (₹450)
-        min = 450;
-        max = 600;
+        // Home safe earthing (₹550 - ₹750)
+        min = 550;
+        max = 750;
         break;
       default:
-        min = 80;
-        max = 150;
+        min = 150;
+        max = 220;
     }
 
     if (urgency === 'urgent') {
@@ -325,9 +325,9 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
                   <span className="font-semibold text-white">{workScale}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>{currentLang === 'mr' ? 'घरपोच व्हिजिट:' : 'Doorstep Visit:'}</span>
+                  <span>{currentLang === 'mr' ? 'घरपोच व्हिजिट फी:' : 'Doorstep Visit Fee:'}</span>
                   <span className="font-semibold text-emerald-400">
-                    {currentLang === 'mr' ? 'बीड शहर (घरपोच)' : 'Beed City'}
+                    {currentLang === 'mr' ? '₹ १५० (बीड शहर)' : '₹ 150 (Beed City)'}
                   </span>
                 </div>
               </div>

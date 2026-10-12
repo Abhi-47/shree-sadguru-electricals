@@ -560,7 +560,7 @@ export const WaterMotorGraphic: React.FC<{ className?: string }> = ({ className 
 
       {/* Pump Specs Text */}
       <text x="170" y="270" fill="#f8fafc" fontSize="13" fontWeight="bold" textAnchor="middle">0.5 HP MONOBLOCK</text>
-      <text x="170" y="380" fill="#38bdf8" fontSize="10" textAnchor="middle">घरगुती पाण्याचा पंप फिटिंग ₹ १५०</text>
+      <text x="170" y="380" fill="#38bdf8" fontSize="10" textAnchor="middle">घरगुती पाण्याचा पंप फिटिंग ₹ २००</text>
 
       {/* Overhead Rooftop Tank (Right) */}
       <rect x="370" y="60" width="180" height="230" rx="16" fill="#1e293b" stroke="#38bdf8" strokeWidth="3" />
@@ -631,7 +631,7 @@ export const HomeEarthingGraphic: React.FC<{ className?: string }> = ({ classNam
       <g transform="translate(60, 400)">
         <rect x="0" y="0" width="480" height="38" rx="6" fill="#020617" stroke="#f59e0b" />
         <text x="240" y="24" fill="#f59e0b" fontSize="11" fontWeight="bold" textAnchor="middle">
-          घरगुती अर्थिंग मजुरी फक्त ₹ ४५० • कुलर, फ्रिज व गिझरचा शॉक पूर्णपणे बंद
+          घरगुती अर्थिंग मजुरी फक्त ₹ ५५० • कुलर, फ्रिज व गिझरचा शॉक पूर्णपणे बंद
         </text>
       </g>
     </svg>
@@ -655,7 +655,7 @@ export const HomeRepairGraphic: React.FC<{ className?: string }> = ({ className 
       <ellipse cx="200" cy="155" rx="14" ry="45" fill="#334155" />
       <circle cx="200" cy="115" r="10" fill="#020617" />
       <text x="200" y="195" fill="#f8fafc" fontSize="11" fontWeight="bold" textAnchor="middle">
-        सीलिंग फॅन फिटिंग ₹ ६० - ₹ ८०
+        सीलिंग फॅन फिटिंग ₹ १०० - ₹ १२०
       </text>
 
       {/* Bathroom 25L Storage Geyser (Right Side) */}
@@ -674,7 +674,7 @@ export const HomeRepairGraphic: React.FC<{ className?: string }> = ({ className 
       <path d="M 405 290 L 405 350" stroke="#3b82f6" strokeWidth="8" fill="none" />
       <path d="M 475 290 L 475 350" stroke="#ef4444" strokeWidth="8" fill="none" />
       <text x="440" y="325" fill="#f8fafc" fontSize="11" fontWeight="bold" textAnchor="middle">
-        गिझर फिटिंग ₹ १५० - ₹ २००
+        गिझर फिटिंग ₹ २०० - ₹ २५०
       </text>
 
       {/* Doorstep Home Service Badge */}
@@ -724,7 +724,7 @@ export const FaultFindingGraphic: React.FC<{ className?: string }> = ({ classNam
       <g transform="translate(100, 360)">
         <rect x="0" y="0" width="400" height="55" rx="8" fill="#020617" stroke="#10b981" strokeWidth="1.5" />
         <text x="200" y="26" fill="#10b981" fontSize="12" fontWeight="bold" textAnchor="middle">
-          घरपोच व्हिजिट व तपासणी फी फक्त ₹ ८० - ₹ १००
+          घरपोच व्हिजिट व तपासणी फी फक्त ₹ १५०
         </text>
         <text x="200" y="44" fill="#cbd5e1" fontSize="9" textAnchor="middle">
           शॉर्ट सर्किट, वीज गळती व सतत पडणारा एमसीबी शोधून तात्काळ दुरुस्ती
