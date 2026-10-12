@@ -1,0 +1,6 @@
+{
+  "name": "ArcPoint Electrical - Licensed Master Electrician",
+  "description": "Professional licensed & insured electrical services for residential and commercial clients. Main panel upgrades, EV chargers, lighting design, whole-home rewiring, and 24/7 emergency dispatch.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
