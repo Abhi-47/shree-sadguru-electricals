@@ -542,7 +542,199 @@ export const BeforeAfterSlider: React.FC<{ lang?: 'mr' | 'en' }> = ({ lang = 'mr
   );
 };
 
-// Dispatcher for Indian project graphics
+// Water Motor & Automatic Float Switch Graphic
+export const WaterMotorGraphic: React.FC<{ className?: string }> = ({ className = 'w-full h-full' }) => {
+  return (
+    <svg viewBox="0 0 600 450" className={`bg-slate-900 rounded-lg select-none ${className}`} xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="600" height="450" fill="#07101e" />
+
+      {/* Monoblock Pump (Left Bottom) */}
+      <rect x="60" y="240" width="220" height="150" rx="14" fill="#0f172a" stroke="#38bdf8" strokeWidth="2.5" />
+      <circle cx="170" cy="315" r="55" fill="#1e293b" stroke="#64748b" strokeWidth="3" />
+      <circle cx="170" cy="315" r="30" fill="#020617" />
+      <circle cx="170" cy="315" r="10" fill="#38bdf8" />
+
+      {/* Pump Flanges and Pipes */}
+      <rect x="150" y="190" width="40" height="50" fill="#475569" rx="3" />
+      <path d="M 170 190 L 170 100 Q 170 80 190 80 L 370 80" stroke="#0ea5e9" strokeWidth="12" fill="none" />
+
+      {/* Pump Specs Text */}
+      <text x="170" y="270" fill="#f8fafc" fontSize="13" fontWeight="bold" textAnchor="middle">0.5 HP MONOBLOCK</text>
+      <text x="170" y="380" fill="#38bdf8" fontSize="10" textAnchor="middle">घरगुती पाण्याचा पंप फिटिंग ₹ १५०</text>
+
+      {/* Overhead Rooftop Tank (Right) */}
+      <rect x="370" y="60" width="180" height="230" rx="16" fill="#1e293b" stroke="#38bdf8" strokeWidth="3" />
+      <rect x="390" y="80" width="140" height="190" rx="10" fill="#0c1f38" />
+
+      {/* Water Fill in Tank */}
+      <rect x="390" y="140" width="140" height="130" rx="4" fill="#0284c7" opacity="0.6" />
+      <path d="M 390 140 Q 425 130 460 140 T 530 140" stroke="#38bdf8" strokeWidth="3" fill="none" />
+
+      {/* Auto Float Switch Sensor inside Tank */}
+      <circle cx="460" cy="170" r="14" fill="#f59e0b" stroke="#d97706" strokeWidth="2" />
+      <path d="M 460 170 L 460 60 L 220 60 L 220 240" stroke="#eab308" strokeWidth="4" strokeDasharray="6 4" fill="none" />
+      <rect x="420" y="200" width="80" height="24" rx="4" fill="#020617" stroke="#eab308" />
+      <text x="460" y="216" fill="#eab308" fontSize="8" fontWeight="bold" textAnchor="middle">ऑटो फ्लोट स्विच</text>
+
+      {/* Feature Badge */}
+      <g transform="translate(60, 400)">
+        <rect x="0" y="0" width="480" height="40" rx="6" fill="#020617" stroke="#10b981" />
+        <text x="240" y="24" fill="#10b981" fontSize="11" fontWeight="bold" textAnchor="middle">
+          टाकी भरताच मोटर आपोआप बंद • १००% पाणी व विजेची बचत
+        </text>
+      </g>
+    </svg>
+  );
+};
+
+// Home Chemical & Copper Earthing Graphic
+export const HomeEarthingGraphic: React.FC<{ className?: string }> = ({ className = 'w-full h-full' }) => {
+  return (
+    <svg viewBox="0 0 600 450" className={`bg-slate-900 rounded-lg select-none ${className}`} xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="600" height="450" fill="#080f1a" />
+
+      {/* Ground Layer (Earth cross-section) */}
+      <rect x="50" y="180" width="500" height="230" rx="10" fill="#1c1917" stroke="#44403c" strokeWidth="2" />
+      <text x="70" y="210" fill="#78716c" fontSize="12" fontWeight="bold">जमीन / अंगण खड्डा (EARTH PIT)</text>
+
+      {/* Chemical Compound Layer */}
+      <rect x="220" y="190" width="160" height="210" rx="6" fill="#292524" stroke="#d97706" strokeWidth="1.5" />
+      <text x="300" y="225" fill="#f59e0b" fontSize="10" fontWeight="bold" textAnchor="middle">केमिकल पावडर (BENTONITE)</text>
+
+      {/* Heavy Copper Earth Pipe / Electrode */}
+      <rect x="290" y="120" width="20" height="260" rx="4" fill="#b45309" stroke="#f59e0b" strokeWidth="2" />
+      <text x="300" y="320" fill="#ffffff" fontSize="9" fontWeight="bold" transform="rotate(-90 300 320)" textAnchor="middle">
+        COPPER EARTH PIPE
+      </text>
+
+      {/* Green Earth Wire Running to Home Switchboard */}
+      <path d="M 300 120 L 300 60 L 120 60 L 120 120" stroke="#16a34a" strokeWidth="8" fill="none" />
+      <circle cx="300" cy="120" r="10" fill="#15803d" stroke="#fef08a" strokeWidth="2" />
+      <text x="210" y="50" fill="#22c55e" fontSize="12" fontWeight="bold">सुरक्षित अर्थिंग वायर (GREEN)</text>
+
+      {/* Home Socket & Zero Shock Indicator */}
+      <rect x="60" y="110" width="130" height="60" rx="8" fill="#020617" stroke="#16a34a" strokeWidth="2" />
+      <circle cx="100" cy="140" r="6" fill="#16a34a" />
+      <circle cx="130" cy="140" r="6" fill="#16a34a" />
+      <circle cx="115" cy="125" r="8" fill="#22c55e" />
+      <text x="125" y="162" fill="#22c55e" fontSize="8" fontWeight="bold">शॉक फ्री सॉकेट</text>
+
+      {/* Safe Reading Badge */}
+      <g transform="translate(400, 70)">
+        <rect x="0" y="0" width="150" height="90" rx="8" fill="#020617" stroke="#10b981" strokeWidth="2" />
+        <text x="75" y="25" fill="#10b981" fontSize="10" fontWeight="bold" textAnchor="middle">EARTH RESISTANCE</text>
+        <text x="75" y="55" fill="#f8fafc" fontSize="22" fontWeight="bold" textAnchor="middle">1.4 Ω</text>
+        <text x="75" y="75" fill="#38bdf8" fontSize="9" textAnchor="middle">१००% शॉक सुरक्षित</text>
+      </g>
+
+      {/* Pricing Pill */}
+      <g transform="translate(60, 400)">
+        <rect x="0" y="0" width="480" height="38" rx="6" fill="#020617" stroke="#f59e0b" />
+        <text x="240" y="24" fill="#f59e0b" fontSize="11" fontWeight="bold" textAnchor="middle">
+          घरगुती अर्थिंग मजुरी फक्त ₹ ४५० • कुलर, फ्रिज व गिझरचा शॉक पूर्णपणे बंद
+        </text>
+      </g>
+    </svg>
+  );
+};
+
+// Home Repair Graphic (Ceiling Fan & Bathroom Geyser Fitting)
+export const HomeRepairGraphic: React.FC<{ className?: string }> = ({ className = 'w-full h-full' }) => {
+  return (
+    <svg viewBox="0 0 600 450" className={`bg-slate-900 rounded-lg select-none ${className}`} xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="600" height="450" fill="#0b1329" />
+
+      {/* Ceiling Plane with Fan Rod */}
+      <rect x="0" y="0" width="600" height="30" fill="#020617" />
+      <rect x="195" y="30" width="10" height="70" fill="#475569" />
+      <ellipse cx="200" cy="115" rx="35" ry="18" fill="#1e293b" stroke="#f59e0b" strokeWidth="2" />
+
+      {/* Ceiling Fan Blades */}
+      <ellipse cx="120" cy="120" rx="65" ry="12" fill="#334155" transform="rotate(-15 120 120)" />
+      <ellipse cx="280" cy="120" rx="65" ry="12" fill="#334155" transform="rotate(15 280 120)" />
+      <ellipse cx="200" cy="155" rx="14" ry="45" fill="#334155" />
+      <circle cx="200" cy="115" r="10" fill="#020617" />
+      <text x="200" y="195" fill="#f8fafc" fontSize="11" fontWeight="bold" textAnchor="middle">
+        सीलिंग फॅन फिटिंग ₹ ६० - ₹ ८०
+      </text>
+
+      {/* Bathroom 25L Storage Geyser (Right Side) */}
+      <rect x="360" y="60" width="160" height="230" rx="35" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="3" />
+      <rect x="385" y="85" width="110" height="180" rx="20" fill="#f1f5f9" />
+      
+      {/* Geyser Temperature Dial & Lights */}
+      <circle cx="440" cy="150" r="22" fill="#020617" />
+      <circle cx="440" cy="150" r="12" fill="#f59e0b" />
+      <circle cx="425" cy="190" r="5" fill="#10b981" />
+      <text x="435" y="193" fill="#10b981" fontSize="8" fontWeight="bold">POWER</text>
+      <circle cx="425" cy="210" r="5" fill="#ef4444" />
+      <text x="435" y="213" fill="#ef4444" fontSize="8" fontWeight="bold">HEATING</text>
+
+      {/* 16A Dedicated Socket Point & Water In/Out Pipes */}
+      <path d="M 405 290 L 405 350" stroke="#3b82f6" strokeWidth="8" fill="none" />
+      <path d="M 475 290 L 475 350" stroke="#ef4444" strokeWidth="8" fill="none" />
+      <text x="440" y="325" fill="#f8fafc" fontSize="11" fontWeight="bold" textAnchor="middle">
+        गिझर फिटिंग ₹ १५० - ₹ २००
+      </text>
+
+      {/* Doorstep Home Service Badge */}
+      <g transform="translate(60, 360)">
+        <rect x="0" y="0" width="480" height="50" rx="8" fill="#020617" stroke="#f59e0b" strokeWidth="1.5" />
+        <text x="240" y="25" fill="#f59e0b" fontSize="11" fontWeight="bold" textAnchor="middle">
+          १००% घरपोच सेवा • उपकरणे कुठेही घेऊन जाण्याची गरज नाही
+        </text>
+        <text x="240" y="40" fill="#94a3b8" fontSize="9" textAnchor="middle">
+          फॅन, कुलर, गिझर व स्विच बोर्ड दुरुस्ती थेट तुमच्या घरी येऊन
+        </text>
+      </g>
+    </svg>
+  );
+};
+
+// Fault Finding & Short Circuit Diagnostic Graphic
+export const FaultFindingGraphic: React.FC<{ className?: string }> = ({ className = 'w-full h-full' }) => {
+  return (
+    <svg viewBox="0 0 600 450" className={`bg-slate-900 rounded-lg select-none ${className}`} xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="600" height="450" fill="#070b14" />
+
+      {/* Digital Multimeter Tester Display */}
+      <rect x="140" y="60" width="320" height="260" rx="16" fill="#1e293b" stroke="#f59e0b" strokeWidth="3" />
+      <rect x="165" y="85" width="270" height="85" rx="6" fill="#020617" stroke="#334155" />
+
+      {/* Digital LCD Readout */}
+      <text x="300" y="135" fill="#10b981" fontSize="32" fontWeight="bold" textAnchor="middle" fontFamily="monospace">
+        234.8 V
+      </text>
+      <text x="300" y="155" fill="#38bdf8" fontSize="10" textAnchor="middle" fontFamily="monospace">
+        50.0 Hz · MAINS NORMAL · FAULT ISOLATED
+      </text>
+
+      {/* Dial Knob */}
+      <circle cx="300" cy="235" r="40" fill="#0f172a" stroke="#64748b" strokeWidth="2" />
+      <line x1="300" y1="235" x2="300" y2="205" stroke="#f59e0b" strokeWidth="5" strokeLinecap="round" />
+      <text x="300" y="250" fill="#f8fafc" fontSize="9" fontWeight="bold" textAnchor="middle">AC 750V</text>
+
+      {/* Red & Black Test Probes */}
+      <path d="M 230 320 Q 200 370 120 380" stroke="#ef4444" strokeWidth="6" fill="none" />
+      <path d="M 370 320 Q 400 370 480 380" stroke="#000000" strokeWidth="6" fill="none" />
+      <rect x="90" y="370" width="40" height="15" rx="2" fill="#ef4444" />
+      <rect x="470" y="370" width="40" height="15" rx="2" fill="#475569" />
+
+      {/* Home Visit Inspection Fee Banner */}
+      <g transform="translate(100, 360)">
+        <rect x="0" y="0" width="400" height="55" rx="8" fill="#020617" stroke="#10b981" strokeWidth="1.5" />
+        <text x="200" y="26" fill="#10b981" fontSize="12" fontWeight="bold" textAnchor="middle">
+          घरपोच व्हिजिट व तपासणी फी फक्त ₹ ८० - ₹ १००
+        </text>
+        <text x="200" y="44" fill="#cbd5e1" fontSize="9" textAnchor="middle">
+          शॉर्ट सर्किट, वीज गळती व सतत पडणारा एमसीबी शोधून तात्काळ दुरुस्ती
+        </text>
+      </g>
+    </svg>
+  );
+};
+
+// Dispatcher for Indian residential project graphics
 export const ProjectGraphicRenderer: React.FC<{
   type: string;
   className?: string;
@@ -550,17 +742,18 @@ export const ProjectGraphicRenderer: React.FC<{
   switch (type) {
     case 'concealed_wiring':
       return <ConcealedWiringGraphic className={className} />;
-    case 'borewell_starter':
-      return <BorewellStarterGraphic className={className} />;
     case 'inverter_battery':
       return <InverterBatteryGraphic className={className} />;
-    case 'motor_rewinding':
-      return <MotorRewindingGraphic className={className} />;
-    case 'commercial_shop':
-      return <CommercialShopGraphic className={className} />;
-    case 'three_phase':
-      return <ThreePhaseGraphic className={className} />;
+    case 'home_repair':
+      return <HomeRepairGraphic className={className} />;
+    case 'water_motor':
+      return <WaterMotorGraphic className={className} />;
+    case 'fault_finding':
+      return <FaultFindingGraphic className={className} />;
+    case 'home_earthing':
+      return <HomeEarthingGraphic className={className} />;
     default:
       return <ConcealedWiringGraphic className={className} />;
   }
 };
+

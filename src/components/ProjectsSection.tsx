@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { INDIAN_PROJECTS_DATA, LocalizedProject, SHOP_INFO } from '../data/mockData';
+import { RESIDENTIAL_PROJECTS_DATA, LocalizedProject, SHOP_INFO } from '../data/mockData';
 import { translations, Language } from '../translations';
 import { BeforeAfterSlider, ProjectGraphicRenderer } from './ElectricalGraphics';
 import {
   MapPin,
-  Calendar,
   CheckCircle2,
   ArrowRight,
   X,
@@ -16,7 +15,6 @@ import {
   ChevronLeft,
   ChevronRight,
   RotateCcw,
-  Sparkles,
   Info
 } from 'lucide-react';
 
@@ -38,8 +36,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   const [zoomLevel, setZoomLevel] = useState<number>(1);
 
   const filteredProjects = activeTab === 'all'
-    ? INDIAN_PROJECTS_DATA
-    : INDIAN_PROJECTS_DATA.filter((p) => p.category === activeTab);
+    ? RESIDENTIAL_PROJECTS_DATA
+    : RESIDENTIAL_PROJECTS_DATA.filter((p) => p.category === activeTab);
 
   const activeLightboxProject = lightboxProjectIndex !== null
     ? filteredProjects[lightboxProjectIndex]
@@ -68,7 +66,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
     setZoomLevel(1);
   }, [lightboxProjectIndex, filteredProjects.length]);
 
-  // Keyboard controls for Lightbox (Escape to close, Arrow keys to navigate)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (lightboxProjectIndex === null) return;
@@ -108,7 +105,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
             <div className="lg:col-span-5 flex flex-col justify-center space-y-4">
               <div className="text-xs font-mono text-amber-400 uppercase">
-                {currentLang === 'mr' ? 'प्रमुख काम · सुरक्षित वायरिंग बदल' : 'FEATURED CASE · SAFE RETROFIT'}
+                {currentLang === 'mr' ? 'घरपोच काम · सुरक्षित मॉड्युलर बदल' : 'DOORSTEP CASE · SAFE RETROFIT'}
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white">
                 {t.projects.sliderTitle}
@@ -116,7 +113,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 {currentLang === 'mr'
                   ? 'घरातील जुन्या लाकडी फ्युज बोर्डमुळे वारंवार स्पार्किंग होत होते व विजेचा धक्का बसण्याची भीती होती. आम्ही जुना धोकादायक बोर्ड काढून हॅवेल्सचा ८-वे एमसीबी डीबी बॉक्स आणि अँकर रोमा मॉड्युलर स्विचेस बसवले.'
-                  : 'Old wooden board had frequent sparks, loose neutral joints, and risk of severe shock. We replaced it with an 8-way Havells MCB box and Anchor Roma modular switches with 40A RCCB protection.'}
+                  : 'Old wooden board had frequent sparks and risk of severe shock. We replaced it with an 8-way Havells MCB box and Anchor Roma modular switches with safe protection.'}
               </p>
 
               <div className="space-y-2 pt-2 border-t border-slate-800 text-xs">
@@ -125,8 +122,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   <span className="font-semibold text-white">शाहू नगर, बीड (Shahu Nagar, Beed)</span>
                 </div>
                 <div className="flex items-center justify-between text-slate-300">
-                  <span className="text-slate-400">{currentLang === 'mr' ? 'सुरक्षितता:' : 'Protection:'}</span>
-                  <span className="font-mono text-emerald-400">40A 30mA RCCB Shock-Proof</span>
+                  <span className="text-slate-400">{currentLang === 'mr' ? 'मजुरी खर्च:' : 'Labor Cost:'}</span>
+                  <span className="font-mono text-emerald-400">वाजवी स्थानिक दर (Affordable)</span>
                 </div>
                 <div className="flex items-center justify-between text-slate-300">
                   <span className="text-slate-400">{currentLang === 'mr' ? 'अर्थिंग तपासणी:' : 'Earth Resistance:'}</span>
@@ -144,7 +141,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 </a>
                 <button
                   type="button"
-                  onClick={() => openLightbox(INDIAN_PROJECTS_DATA[0])}
+                  onClick={() => openLightbox(RESIDENTIAL_PROJECTS_DATA[0])}
                   className="px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-lg flex items-center gap-1.5"
                 >
                   <Maximize2 className="w-3.5 h-3.5 text-amber-400" />
@@ -156,22 +153,23 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         </div>
 
         {/* Category Tabs */}
-        <div className="flex items-center gap-1.5 p-1.5 bg-slate-900 border border-slate-800 rounded-xl max-w-full overflow-x-auto mb-10">
+        <div className="flex items-center gap-2 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl max-w-full overflow-x-auto mb-10 scrollbar-none">
           {[
             { id: 'all', label: t.services.tabs.all },
-            { id: 'residential', label: t.services.tabs.houseWiring },
-            { id: 'agriculture', label: t.services.tabs.agriculture },
+            { id: 'house_wiring', label: t.services.tabs.houseWiring },
+            { id: 'home_repair', label: t.services.tabs.homeRepair },
             { id: 'inverter', label: t.services.tabs.inverter },
-            { id: 'commercial', label: t.services.tabs.commercial },
-            { id: 'repairRewinding', label: t.services.tabs.repairRewinding },
+            { id: 'water_motor', label: t.services.tabs.waterMotor },
+            { id: 'fault_finding', label: t.services.tabs.faultFinding },
+            { id: 'earthing', label: t.services.tabs.earthing },
           ].map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0 ${
+              className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 activeTab === tab.id
-                  ? 'bg-amber-400 text-slate-950 shadow-xs'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-amber-400 text-slate-950 shadow-md shadow-amber-400/20'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-850'
               }`}
             >
               {tab.label}
@@ -190,7 +188,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             return (
               <div
                 key={proj.id}
-                className="rounded-xl border border-slate-800 bg-slate-950 overflow-hidden hover:border-slate-700 transition-all flex flex-col justify-between group"
+                className="rounded-2xl border border-slate-800 bg-slate-950 overflow-hidden hover:border-slate-700 transition-all flex flex-col justify-between group"
               >
                 <div>
                   {/* Clickable Image Container that Triggers Lightbox */}
@@ -204,13 +202,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                       className="w-full h-full object-cover group-hover/img:scale-[1.03] transition-transform duration-300"
                     />
 
-                    {/* Verified Status Tag */}
                     <div className="absolute bottom-3 left-3 bg-slate-950/90 border border-slate-800 px-2.5 py-1 rounded text-[11px] font-mono text-emerald-400 flex items-center gap-1.5 backdrop-blur-xs">
                       <CheckCircle2 className="w-3 h-3 text-emerald-400" />
-                      <span>{currentLang === 'mr' ? 'काम पूर्ण व चालू' : 'TESTED & WORKING'}</span>
+                      <span>{currentLang === 'mr' ? 'घरपोच काम पूर्ण' : 'DOORSTEP WORK'}</span>
                     </div>
 
-                    {/* Hover Lightbox Indicator Overlay */}
                     <div className="absolute inset-0 bg-slate-950/50 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 flex items-center justify-center backdrop-blur-xs">
                       <div className="bg-slate-900/90 border border-amber-400/50 text-amber-400 px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 shadow-2xl scale-95 group-hover/img:scale-100 transition-transform">
                         <Maximize2 className="w-4 h-4" />
@@ -218,7 +214,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                       </div>
                     </div>
 
-                    {/* Subtle Expand badge in corner */}
                     <div className="absolute top-3 right-3 bg-slate-950/80 border border-slate-700 text-slate-300 p-1.5 rounded-lg group-hover/img:text-amber-400 group-hover/img:border-amber-400 transition-colors">
                       <Maximize2 className="w-3.5 h-3.5" />
                     </div>
@@ -242,7 +237,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                       {summary}
                     </p>
 
-                    {/* Specifications table */}
                     <div className="space-y-1.5 p-3 rounded-lg bg-slate-900 border border-slate-800 text-[11px]">
                       {proj.specifications.slice(0, 2).map((s, idx) => (
                         <div key={idx} className="flex justify-between items-center text-slate-400">
@@ -281,7 +275,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         <div
           className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex flex-col justify-between animate-in fade-in select-none"
           onClick={(e) => {
-            // Close if clicked on empty backdrop
             if (e.target === e.currentTarget) closeLightbox();
           }}
         >
@@ -310,7 +303,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
             {/* Controls (Zoom & Close) */}
             <div className="flex items-center gap-2 sm:gap-3">
-              {/* Zoom In / Out Buttons */}
               <div className="hidden sm:flex items-center gap-1 bg-slate-900 border border-slate-800 rounded-lg p-1">
                 <button
                   type="button"
@@ -343,7 +335,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 )}
               </div>
 
-              {/* View Full Case Study button */}
               <button
                 type="button"
                 onClick={() => {
@@ -354,10 +345,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 className="hidden md:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-lg transition-colors"
               >
                 <Info className="w-3.5 h-3.5 text-amber-400" />
-                <span>{currentLang === 'mr' ? 'तपशील माहिती' : 'Case Details'}</span>
+                <span>{currentLang === 'mr' ? 'तपशील' : 'Details'}</span>
               </button>
 
-              {/* Close Button */}
               <button
                 type="button"
                 onClick={closeLightbox}
@@ -371,7 +361,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
           {/* Lightbox Center Image Stage */}
           <div className="relative flex-1 flex items-center justify-center p-4 sm:p-8 overflow-hidden">
-            {/* Prev Button */}
             <button
               type="button"
               onClick={prevLightboxProject}
@@ -382,7 +371,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               <ChevronLeft className="w-6 h-6" />
             </button>
 
-            {/* High-Resolution Graphic Display with Zoom Transform */}
             <div
               className="relative max-w-5xl w-full aspect-[4/3] max-h-[70vh] rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-950 transition-transform duration-200"
               style={{ transform: `scale(${zoomLevel})` }}
@@ -392,14 +380,12 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                 className="w-full h-full object-contain"
               />
 
-              {/* Live Technical Watermark / Verification Tag */}
               <div className="absolute top-4 left-4 bg-slate-950/80 border border-slate-800 px-3 py-1.5 rounded-lg text-xs font-mono text-emerald-400 flex items-center gap-2 backdrop-blur-xs">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>{currentLang === 'mr' ? 'श्री सद्गुरु इलेक्ट्रिकल्स - अधिकृत काम' : 'Shree Sadguru Electricals, Beed'}</span>
+                <span>{currentLang === 'mr' ? 'श्री सद्गुरु इलेक्ट्रिकल्स - घरपोच सेवा' : 'Shree Sadguru - Home Service'}</span>
               </div>
             </div>
 
-            {/* Next Button */}
             <button
               type="button"
               onClick={nextLightboxProject}
@@ -429,7 +415,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               </div>
             </div>
 
-            {/* Direct Instant Action in Lightbox */}
             <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto justify-end">
               <a
                 href={`tel:${SHOP_INFO.phone1}`}
@@ -455,7 +440,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         </div>
       )}
 
-      {/* Project Details Modal (Case Study breakdown) */}
+      {/* Project Details Modal */}
       {activeModalProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in">
           <div className="relative w-full max-w-3xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
@@ -477,7 +462,6 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               {activeModalProject.title[currentLang]}
             </h3>
 
-            {/* Clickable Image inside Modal that also opens Lightbox */}
             <div
               onClick={() => {
                 const proj = activeModalProject;
@@ -497,7 +481,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
                 <h4 className="text-xs font-mono font-bold text-rose-400 uppercase tracking-wider mb-2">
-                  {currentLang === 'mr' ? 'आधीची समस्या' : 'The Problem'}
+                  {currentLang === 'mr' ? 'आधीची अडचण' : 'The Problem'}
                 </h4>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                   {activeModalProject.challenge[currentLang]}
@@ -506,7 +490,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
               <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
                 <h4 className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider mb-2">
-                  {currentLang === 'mr' ? 'श्री सद्गुरु इलेक्ट्रिकल्सचे समाधान' : 'Our Solution'}
+                  {currentLang === 'mr' ? 'श्री सद्गुरु इलेक्ट्रिकल्सचे काम' : 'Our Work'}
                 </h4>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                   {activeModalProject.solution[currentLang]}
@@ -516,7 +500,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
             <div className="mb-6">
               <h4 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider mb-3">
-                {currentLang === 'mr' ? 'कामाचे तांत्रिक तपशील' : 'Technical Specifications'}
+                {currentLang === 'mr' ? 'कामाचे तपशील' : 'Details'}
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 {activeModalProject.specifications.map((s, idx) => (
@@ -540,7 +524,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
               <a
                 href={`https://wa.me/${SHOP_INFO.phone1Raw}?text=${encodeURIComponent(
-                  `नमस्कार, मला "${activeModalProject.title.mr}" प्रमाणे कामाची चौकशी करायची आहे.`
+                  `नमस्कार, मला "${activeModalProject.title.mr}" प्रमाणे घरपोच कामाची चौकशी करायची आहे.`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"

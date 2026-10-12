@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { INDIAN_FAQ_DATA } from '../data/mockData';
+import { RESIDENTIAL_FAQ_DATA } from '../data/mockData';
 import { translations, Language } from '../translations';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
@@ -12,33 +12,33 @@ export const FAQSection: React.FC<{ currentLang: Language }> = ({ currentLang })
   };
 
   return (
-    <section className="py-20 bg-slate-900/40 border-b border-slate-800">
+    <section className="py-16 sm:py-24 bg-slate-900/40 border-b border-slate-800">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-amber-400 uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-2">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>{t.faq.kicker}</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight font-sans">
             {t.faq.title}
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 mt-2">
+          <p className="text-xs sm:text-sm text-slate-300 mt-2">
             {t.faq.subtitle}
           </p>
         </div>
 
         <div className="space-y-3">
-          {INDIAN_FAQ_DATA.map((item, idx) => {
+          {RESIDENTIAL_FAQ_DATA.map((item, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
                 key={idx}
-                className="rounded-xl border border-slate-800 bg-slate-950 overflow-hidden transition-colors"
+                className="rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden transition-colors"
               >
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 text-sm font-semibold text-white hover:text-amber-400 transition-colors"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 text-sm sm:text-base font-semibold text-white hover:text-amber-400 transition-colors cursor-pointer"
                 >
                   <span>{item.q[currentLang]}</span>
                   <ChevronDown
@@ -48,7 +48,7 @@ export const FAQSection: React.FC<{ currentLang: Language }> = ({ currentLang })
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-900">
+                  <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-900/80">
                     {item.a[currentLang]}
                   </div>
                 )}

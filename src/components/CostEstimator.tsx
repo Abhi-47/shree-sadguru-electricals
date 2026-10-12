@@ -1,7 +1,7 @@
 import React, { useState, useId } from 'react';
 import { translations, Language } from '../translations';
 import { SHOP_INFO } from '../data/mockData';
-import { Calculator, ArrowRight, Check, Phone, MessageSquare } from 'lucide-react';
+import { Calculator, ArrowRight, Check, Phone, MessageSquare, Home, Sparkles, ShieldCheck } from 'lucide-react';
 
 interface CostEstimatorProps {
   currentLang: Language;
@@ -16,73 +16,72 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
 }) => {
   const t = translations[currentLang];
   const [selectedService, setSelectedService] = useState(initialServiceId);
-  const [propertyType, setPropertyType] = useState<'house_flat' | 'farm_borewell' | 'shop_commercial'>('house_flat');
-  const [materialScope, setMaterialScope] = useState<'with_material' | 'labor_only'>('with_material');
+  const [workScale, setWorkScale] = useState<'minor' | 'medium' | 'complete'>('minor');
   const [urgency, setUrgency] = useState<'normal' | 'urgent'>('normal');
 
   const [addOns, setAddOns] = useState({
-    chemicalEarth: true,
-    rccbShockProof: true,
+    safeEarth: false,
+    mcbTripFix: false,
     autoSwitch: false,
-    inverterBypass: false,
+    changeover: false,
   });
 
   const earthId = useId();
-  const rccbId = useId();
+  const mcbId = useId();
   const autoSwitchId = useId();
-  const bypassId = useId();
+  const changeoverId = useId();
 
-  // Pricing engine in Indian Rupees (₹)
+  // Local lowered, affordable pricing engine for Beed market in INR (₹)
   const calculateEstimate = () => {
-    let min = 2500;
-    let max = 4500;
+    let min = 80;
+    let max = 150;
 
     switch (selectedService) {
       case 'house-wiring':
-        // 1BHK / 2BHK basic estimates
-        min = materialScope === 'with_material' ? 18000 : 7500;
-        max = materialScope === 'with_material' ? 32000 : 14000;
+        // Affordable point wiring labor (₹90/pt)
+        min = workScale === 'minor' ? 180 : workScale === 'medium' ? 540 : 1200;
+        max = workScale === 'minor' ? 270 : workScale === 'medium' ? 850 : 1800;
         break;
-      case 'borewell-starter':
-        min = materialScope === 'with_material' ? 5500 : 1500;
-        max = materialScope === 'with_material' ? 9500 : 2500;
+      case 'home-repair':
+        // Fan/cooler/geyser fitting (Fan ₹60, geyser ₹150)
+        min = workScale === 'minor' ? 60 : workScale === 'medium' ? 150 : 300;
+        max = workScale === 'minor' ? 100 : workScale === 'medium' ? 220 : 450;
         break;
       case 'inverter-battery':
-        min = materialScope === 'with_material' ? 19000 : 850;
-        max = materialScope === 'with_material' ? 26000 : 1400;
+        // Inverter fitting labor (₹200 - ₹280)
+        min = workScale === 'minor' ? 200 : 280;
+        max = workScale === 'minor' ? 280 : 380;
         break;
-      case 'motor-rewinding':
+      case 'water-motor':
+        // Home water motor & float switch (₹150)
+        min = workScale === 'minor' ? 150 : 250;
+        max = workScale === 'minor' ? 200 : 350;
+        break;
+      case 'fault-finding':
+        // Short circuit diagnostic visit (₹80 - ₹120)
+        min = 80;
+        max = 120;
+        break;
+      case 'earthing':
+        // Home safe earthing (₹450)
         min = 450;
-        max = 2800;
-        break;
-      case 'three-phase':
-        min = materialScope === 'with_material' ? 8500 : 3500;
-        max = materialScope === 'with_material' ? 16000 : 6000;
-        break;
-      case 'commercial-shop':
-        min = materialScope === 'with_material' ? 6500 : 2200;
-        max = materialScope === 'with_material' ? 14000 : 4500;
+        max = 600;
         break;
       default:
-        min = 1500;
-        max = 3500;
-    }
-
-    if (propertyType === 'farm_borewell') {
-      min *= 1.1;
-      max *= 1.15;
+        min = 80;
+        max = 150;
     }
 
     if (urgency === 'urgent') {
-      min += 500;
-      max += 800;
+      min += 30;
+      max += 50;
     }
 
     let addOnTotal = 0;
-    if (addOns.chemicalEarth) addOnTotal += 2200;
-    if (addOns.rccbShockProof) addOnTotal += 1650;
-    if (addOns.autoSwitch) addOnTotal += 1150;
-    if (addOns.inverterBypass) addOnTotal += 850;
+    if (addOns.safeEarth) addOnTotal += 100;
+    if (addOns.mcbTripFix) addOnTotal += 80;
+    if (addOns.autoSwitch) addOnTotal += 100;
+    if (addOns.changeover) addOnTotal += 80;
 
     return {
       min: Math.round(min + addOnTotal),
@@ -94,290 +93,261 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
   const est = calculateEstimate();
 
   const handleApply = () => {
-    const summary = `${selectedService} (${propertyType}, ${materialScope}, ${urgency}). Estimated ₹${est.min} - ₹${est.max}`;
+    const serviceName = selectedService.replace('-', ' ').toUpperCase();
+    const summary = `${serviceName} (${workScale}, ${urgency}). Estimated ₹${est.min} - ₹${est.max}`;
     onApplyEstimateToContact(summary);
   };
 
   return (
-    <section id="estimator" className="py-20 bg-slate-950 border-b border-slate-800">
+    <section id="estimator" className="py-16 sm:py-24 bg-slate-950 border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="text-xs font-mono font-semibold text-amber-400 tracking-wider uppercase mb-2">
-              {t.estimator.kicker}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-semibold tracking-wider uppercase mb-2">
+              <Calculator className="w-3.5 h-3.5" />
+              <span>{t.estimator.kicker}</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight text-balance">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight font-sans">
               {t.estimator.title}
             </h2>
           </div>
-          <p className="text-sm text-slate-400 max-w-md leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-300 max-w-md leading-relaxed">
             {t.estimator.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Controls Column */}
-          <div className="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
-            {/* Step 1: Select Service */}
-            <div>
-              <label className="block text-xs font-mono font-bold text-slate-300 uppercase mb-2">
+          <div className="lg:col-span-7 space-y-6">
+            {/* Step 1: Select Work Type */}
+            <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-md">
+              <label className="block text-xs sm:text-sm font-bold text-white mb-3">
                 {t.estimator.step1}
               </label>
-              <select
-                value={selectedService}
-                onChange={(e) => setSelectedService(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-hidden focus:border-amber-400"
-              >
-                <option value="house-wiring">
-                  {currentLang === 'mr' ? 'घरगुती कन्सिल्ड वायरिंग (House Wiring)' : 'House Concealed Wiring'}
-                </option>
-                <option value="borewell-starter">
-                  {currentLang === 'mr' ? 'शेती बोरवेल स्टार्टर व पॅनेल (Borewell Starter)' : 'Borewell Submersible Starter'}
-                </option>
-                <option value="inverter-battery">
-                  {currentLang === 'mr' ? 'इन्व्हर्टर व टॉल ट्युब्युलर बॅटरी (Inverter Setup)' : 'Inverter & Battery Backup'}
-                </option>
-                <option value="motor-rewinding">
-                  {currentLang === 'mr' ? 'मोटर / कुलर / फॅन रिवाइंडिंग (Motor Rewinding)' : 'Motor / Fan Rewinding'}
-                </option>
-                <option value="three-phase">
-                  {currentLang === 'mr' ? '३-फेज गिरणी / वेल्डिंग कनेक्शन (3-Phase Mill)' : '3-Phase Flour Mill / Workshop'}
-                </option>
-                <option value="commercial-shop">
-                  {currentLang === 'mr' ? 'दुकान व शोरूम एलईडी फिटिंग (Commercial Shop)' : 'Commercial Shop Electricals'}
-                </option>
-              </select>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                {[
+                  { id: 'house-wiring', mr: 'कन्सिल्ड वायरिंग', en: 'House Wiring' },
+                  { id: 'home-repair', mr: 'फॅन / गिझर / कुलर', en: 'Fan / Geyser' },
+                  { id: 'inverter-battery', mr: 'इन्व्हर्टर व बॅटरी', en: 'Inverter Setup' },
+                  { id: 'water-motor', mr: 'पाण्याची मोटर', en: 'Water Motor' },
+                  { id: 'fault-finding', mr: 'शॉर्ट सर्किट / फॉल्ट', en: 'Short Circuit' },
+                  { id: 'earthing', mr: 'घरगुती अर्थिंग', en: 'Home Earthing' },
+                ].map((s) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => setSelectedService(s.id)}
+                    className={`p-3 rounded-xl border text-left text-xs font-semibold transition-all cursor-pointer ${
+                      selectedService === s.id
+                        ? 'border-amber-400 bg-amber-400/10 text-amber-300 shadow-xs'
+                        : 'border-slate-800 bg-slate-950/60 text-slate-300 hover:border-slate-700'
+                    }`}
+                  >
+                    <div className="line-clamp-1">{currentLang === 'mr' ? s.mr : s.en}</div>
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* Step 2: Property Type */}
-            <div>
-              <label className="block text-xs font-mono font-bold text-slate-300 uppercase mb-2">
+            {/* Step 2: Work Scale */}
+            <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-md">
+              <label className="block text-xs sm:text-sm font-bold text-white mb-3">
                 {t.estimator.step2}
               </label>
-              <div className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-3 gap-3">
                 {[
-                  { id: 'house_flat', label: currentLang === 'mr' ? 'घर / बंगला' : 'Home / Flat' },
-                  { id: 'farm_borewell', label: currentLang === 'mr' ? 'शेत / बोरवेल' : 'Farm / Well' },
-                  { id: 'shop_commercial', label: currentLang === 'mr' ? 'दुकान / गिरणी' : 'Shop / Mill' },
-                ].map((item) => (
+                  {
+                    id: 'minor',
+                    labelMr: 'किरकोळ काम',
+                    labelEn: 'Small Job',
+                    descMr: '१-२ वस्तू दुरुस्ती / १ फॅन',
+                    descEn: '1-2 items / 1 fan',
+                  },
+                  {
+                    id: 'medium',
+                    labelMr: 'मध्यम काम',
+                    labelEn: 'Medium Job',
+                    descMr: '१ खोली / गिझर + फॅन',
+                    descEn: '1 room / geyser + fan',
+                  },
+                  {
+                    id: 'complete',
+                    labelMr: 'मोठे काम',
+                    labelEn: 'Complete Job',
+                    descMr: 'पूर्ण घर वायरिंग / इन्व्हर्टर',
+                    descEn: 'Full home / inverter',
+                  },
+                ].map((scale) => (
                   <button
-                    key={item.id}
+                    key={scale.id}
                     type="button"
-                    onClick={() => setPropertyType(item.id as any)}
-                    className={`px-3 py-2 text-xs font-semibold rounded-lg border transition-all text-center truncate ${
-                      propertyType === item.id
-                        ? 'bg-amber-400/10 border-amber-400 text-amber-400'
-                        : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
+                    onClick={() => setWorkScale(scale.id as any)}
+                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                      workScale === scale.id
+                        ? 'border-amber-400 bg-amber-400/10 text-amber-300'
+                        : 'border-slate-800 bg-slate-950/60 text-slate-400 hover:border-slate-700'
                     }`}
                   >
-                    {item.label}
+                    <div className="text-xs sm:text-sm font-bold text-white mb-1">
+                      {currentLang === 'mr' ? scale.labelMr : scale.labelEn}
+                    </div>
+                    <div className="text-[11px] text-slate-400 line-clamp-1">
+                      {currentLang === 'mr' ? scale.descMr : scale.descEn}
+                    </div>
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Step 3: Material Preference */}
-            <div>
-              <label className="block text-xs font-mono font-bold text-slate-300 uppercase mb-2">
+            {/* Step 3: Urgency */}
+            <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-md">
+              <label className="block text-xs sm:text-sm font-bold text-white mb-3">
                 {t.estimator.step3}
               </label>
-              <div className="grid grid-cols-2 gap-2.5">
-                {[
-                  { id: 'with_material', label: currentLang === 'mr' ? 'साहित्यासह (पॉलिकॅब/अँकर/एल अँड टी)' : 'With Materials (Polycab/L&T)' },
-                  { id: 'labor_only', label: currentLang === 'mr' ? 'फक्त मजुरी (सामान ग्राहकाचे)' : 'Labor Only (Your Materials)' },
-                ].map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setMaterialScope(item.id as any)}
-                    className={`px-3 py-2 text-xs font-semibold rounded-lg border transition-all text-center truncate ${
-                      materialScope === item.id
-                        ? 'bg-amber-400/10 border-amber-400 text-amber-400'
-                        : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  onClick={() => setUrgency('normal')}
+                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                    urgency === 'normal'
+                      ? 'border-amber-400 bg-amber-400/10 text-amber-300'
+                      : 'border-slate-800 bg-slate-950/60 text-slate-400 hover:border-slate-700'
+                  }`}
+                >
+                  <div className="text-xs sm:text-sm font-bold text-white">
+                    {currentLang === 'mr' ? 'नियमित (आज किंवा सोयीनुसार)' : 'Standard (Today / Convenient)'}
+                  </div>
+                  <div className="text-[11px] text-slate-400 mt-0.5">
+                    {currentLang === 'mr' ? 'कोणताही जादा आकार नाही' : 'Normal labor rates'}
+                  </div>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setUrgency('urgent')}
+                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                    urgency === 'urgent'
+                      ? 'border-rose-400 bg-rose-400/10 text-rose-300'
+                      : 'border-slate-800 bg-slate-950/60 text-slate-400 hover:border-slate-700'
+                  }`}
+                >
+                  <div className="text-xs sm:text-sm font-bold text-white">
+                    {currentLang === 'mr' ? 'तातडीने (१५-३० मि. इमर्जन्सी)' : 'Urgent (15-30 Min Emergency)'}
+                  </div>
+                  <div className="text-[11px] text-slate-400 mt-0.5">
+                    {currentLang === 'mr' ? 'तातडीने घरपोच धाव (+₹३० ते ₹५०)' : 'Emergency response (+₹30 to ₹50)'}
+                  </div>
+                </button>
               </div>
             </div>
 
-            {/* Step 4: Urgency */}
-            <div>
-              <label className="block text-xs font-mono font-bold text-slate-300 uppercase mb-2">
+            {/* Step 4: Optional Add-ons */}
+            <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-md">
+              <label className="block text-xs sm:text-sm font-bold text-white mb-3">
                 {t.estimator.step4}
               </label>
-              <div className="grid grid-cols-2 gap-2.5">
+              <div className="space-y-2.5">
                 {[
-                  { id: 'normal', label: currentLang === 'mr' ? 'नियोजित वेळ (१ ते ३ दिवस)' : 'Standard (1-3 Days)' },
-                  { id: 'urgent', label: currentLang === 'mr' ? 'तातडीने आजच (Same Day)' : 'Urgent (Same Day)' },
+                  {
+                    id: earthId,
+                    checked: addOns.safeEarth,
+                    onChange: () => setAddOns((p) => ({ ...p, safeEarth: !p.safeEarth })),
+                    titleMr: 'घरातील सर्व सॉकेट्सचे अर्थिंग टेस्टरने चेकिंग (+ ₹१००)',
+                    titleEn: 'Check earthing continuity across all sockets (+ ₹100)',
+                  },
+                  {
+                    id: mcbId,
+                    checked: addOns.mcbTripFix,
+                    onChange: () => setAddOns((p) => ({ ...p, mcbTripFix: !p.mcbTripFix })),
+                    titleMr: 'सतत पडणारा MCB बदलणे किंवा फिक्स करणे (+ ₹८०)',
+                    titleEn: 'Replace or isolate tripping breaker (+ ₹80)',
+                  },
+                  {
+                    id: autoSwitchId,
+                    checked: addOns.autoSwitch,
+                    onChange: () => setAddOns((p) => ({ ...p, autoSwitch: !p.autoSwitch })),
+                    titleMr: 'पाण्याच्या टाकीचा ऑटो फ्लोट स्विच जोडणी (+ ₹१००)',
+                    titleEn: 'Water tank auto float sensor fitting (+ ₹100)',
+                  },
+                  {
+                    id: changeoverId,
+                    checked: addOns.changeover,
+                    onChange: () => setAddOns((p) => ({ ...p, changeover: !p.changeover })),
+                    titleMr: 'इन्व्हर्टरसाठी मॅन्युअल बायपास चेंजओव्हर स्विच जोडणे (+ ₹८०)',
+                    titleEn: 'Manual bypass changeover switch connection (+ ₹80)',
+                  },
                 ].map((item) => (
-                  <button
+                  <label
                     key={item.id}
-                    type="button"
-                    onClick={() => setUrgency(item.id as any)}
-                    className={`px-3 py-2 text-xs font-semibold rounded-lg border transition-all text-center truncate ${
-                      urgency === item.id
-                        ? 'bg-amber-400/10 border-amber-400 text-amber-400'
-                        : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
-                    }`}
+                    className="flex items-center gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 hover:border-slate-700 cursor-pointer transition-colors"
                   >
-                    {item.label}
-                  </button>
+                    <input
+                      type="checkbox"
+                      checked={item.checked}
+                      onChange={item.onChange}
+                      className="w-4 h-4 rounded text-amber-400 focus:ring-amber-400 bg-slate-900 border-slate-700 accent-amber-400"
+                    />
+                    <span className="text-xs sm:text-sm text-slate-200">
+                      {currentLang === 'mr' ? item.titleMr : item.titleEn}
+                    </span>
+                  </label>
                 ))}
-              </div>
-            </div>
-
-            {/* Step 5: Add-ons */}
-            <div>
-              <label className="block text-xs font-mono font-bold text-slate-300 uppercase mb-2.5">
-                {t.estimator.step5}
-              </label>
-              <div className="space-y-2.5 text-xs">
-                <label htmlFor={earthId} className="flex items-center justify-between p-3 rounded-lg bg-slate-950 border border-slate-800 cursor-pointer hover:border-slate-700">
-                  <div className="flex items-center gap-3">
-                    <input
-                      id={earthId}
-                      type="checkbox"
-                      checked={addOns.chemicalEarth}
-                      onChange={(e) => setAddOns({ ...addOns, chemicalEarth: e.target.checked })}
-                      className="rounded text-amber-400 focus:ring-amber-400 bg-slate-900 border-slate-700"
-                    />
-                    <div>
-                      <div className="font-semibold text-white">
-                        {currentLang === 'mr' ? 'रासायनिक कॉपर अर्थिंग खड्डा (Chemical Earth Pit)' : 'Chemical Copper Earth Pit'}
-                      </div>
-                      <div className="text-[11px] text-slate-400">
-                        {currentLang === 'mr' ? 'शॉक आणि वीज पडण्यापासून १००% संरक्षण' : 'Complete shock and surge protection'}
-                      </div>
-                    </div>
-                  </div>
-                  <span className="font-mono text-amber-400 font-bold">+₹२,२००</span>
-                </label>
-
-                <label htmlFor={rccbId} className="flex items-center justify-between p-3 rounded-lg bg-slate-950 border border-slate-800 cursor-pointer hover:border-slate-700">
-                  <div className="flex items-center gap-3">
-                    <input
-                      id={rccbId}
-                      type="checkbox"
-                      checked={addOns.rccbShockProof}
-                      onChange={(e) => setAddOns({ ...addOns, rccbShockProof: e.target.checked })}
-                      className="rounded text-amber-400 focus:ring-amber-400 bg-slate-900 border-slate-700"
-                    />
-                    <div>
-                      <div className="font-semibold text-white">
-                        {currentLang === 'mr' ? '४०A आरसीसीबी शॉक प्रोटेक्टर (RCCB Breaker)' : '40A RCCB Human Shock Trip'}
-                      </div>
-                      <div className="text-[11px] text-slate-400">
-                        {currentLang === 'mr' ? 'मानवी स्पर्श झाल्यास ०.०३ सेकंदात वीज बंद होते' : 'Instantly trips power on human shock'}
-                      </div>
-                    </div>
-                  </div>
-                  <span className="font-mono text-amber-400 font-bold">+₹१,६५०</span>
-                </label>
-
-                <label htmlFor={autoSwitchId} className="flex items-center justify-between p-3 rounded-lg bg-slate-950 border border-slate-800 cursor-pointer hover:border-slate-700">
-                  <div className="flex items-center gap-3">
-                    <input
-                      id={autoSwitchId}
-                      type="checkbox"
-                      checked={addOns.autoSwitch}
-                      onChange={(e) => setAddOns({ ...addOns, autoSwitch: e.target.checked })}
-                      className="rounded text-amber-400 focus:ring-amber-400 bg-slate-900 border-slate-700"
-                    />
-                    <div>
-                      <div className="font-semibold text-white">
-                        {currentLang === 'mr' ? 'शेती स्टार्टर ऑटो-स्विच युनिट (Auto-Switch)' : 'Farm Motor Auto-Switch Unit'}
-                      </div>
-                      <div className="text-[11px] text-slate-400">
-                        {currentLang === 'mr' ? 'वीज आल्यावर मोटर आपोआप सुरू होते' : 'Starts pump automatically on power restoration'}
-                      </div>
-                    </div>
-                  </div>
-                  <span className="font-mono text-amber-400 font-bold">+₹१,१५०</span>
-                </label>
-
-                <label htmlFor={bypassId} className="flex items-center justify-between p-3 rounded-lg bg-slate-950 border border-slate-800 cursor-pointer hover:border-slate-700">
-                  <div className="flex items-center gap-3">
-                    <input
-                      id={bypassId}
-                      type="checkbox"
-                      checked={addOns.inverterBypass}
-                      onChange={(e) => setAddOns({ ...addOns, inverterBypass: e.target.checked })}
-                      className="rounded text-amber-400 focus:ring-amber-400 bg-slate-900 border-slate-700"
-                    />
-                    <div>
-                      <div className="font-semibold text-white">
-                        {currentLang === 'mr' ? 'इन्व्हर्टर बायपास चेंजओव्हर स्विच (Bypass Switch)' : 'Inverter Bypass Rotary Changeover'}
-                      </div>
-                      <div className="text-[11px] text-slate-400">
-                        {currentLang === 'mr' ? 'इन्व्हर्टर बिघडल्यास घर अंधारात राहत नाही' : 'Bypasses inverter directly to grid if faulted'}
-                      </div>
-                    </div>
-                  </div>
-                  <span className="font-mono text-amber-400 font-bold">+₹८५०</span>
-                </label>
               </div>
             </div>
           </div>
 
-          {/* Result Card Column */}
+          {/* Result Column (Stylish estimate card) */}
           <div className="lg:col-span-5 sticky top-24">
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl">
-              <div className="flex items-center gap-2 text-xs font-mono text-amber-400 mb-2">
-                <Calculator className="w-4 h-4" />
-                <span>{currentLang === 'mr' ? 'अंदाजे खर्च तपशील' : 'ESTIMATED BUDGET'}</span>
+            <div className="bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>{currentLang === 'mr' ? 'पारदर्शक घरपोच दर' : 'Transparent Doorstep Rate'}</span>
               </div>
 
-              <h3 className="text-lg font-bold text-white mb-1">
+              <div className="text-xs sm:text-sm text-slate-400 mb-2">
                 {t.estimator.estimatedTotal}
-              </h3>
-              <p className="text-xs text-slate-400 mb-6">
+              </div>
+
+              <div className="text-4xl sm:text-5xl font-black text-amber-400 font-sans tracking-tight mb-3">
+                ₹ {est.min} - ₹ {est.max}
+              </div>
+
+              <p className="text-xs text-slate-400 leading-relaxed mb-6">
                 {t.estimator.rangeNote}
               </p>
 
-              {/* Price Range Display */}
-              <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 mb-6 text-center">
-                <span className="text-xs font-mono text-slate-400 block mb-1">
-                  {currentLang === 'mr' ? 'अंदाजे रक्कम (रुपये)' : 'Estimated INR (₹)'}
-                </span>
-                <div className="text-3xl sm:text-4xl font-extrabold font-mono text-amber-400 tabular-nums">
-                  ₹{est.min.toLocaleString('en-IN')} – ₹{est.max.toLocaleString('en-IN')}
+              <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2 mb-6 text-xs text-slate-300">
+                <div className="flex justify-between">
+                  <span>{currentLang === 'mr' ? 'सेवा प्रकार:' : 'Service:'}</span>
+                  <span className="font-semibold text-white">{selectedService.replace('-', ' ')}</span>
                 </div>
-                <span className="text-[11px] text-emerald-400 mt-1.5 block">
-                  {currentLang === 'mr'
-                    ? 'स्थानिक बीड दुकान वॉरंटीसह प्रामाणिक काम'
-                    : 'Genuine Work with Local Beed Shop Warranty'}
-                </span>
+                <div className="flex justify-between">
+                  <span>{currentLang === 'mr' ? 'कामाचे प्रमाण:' : 'Scale:'}</span>
+                  <span className="font-semibold text-white">{workScale}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>{currentLang === 'mr' ? 'घरपोच व्हिजिट:' : 'Doorstep Visit:'}</span>
+                  <span className="font-semibold text-emerald-400">
+                    {currentLang === 'mr' ? 'बीड शहर (घरपोच)' : 'Beed City'}
+                  </span>
+                </div>
               </div>
 
-              {/* Action Buttons */}
-              <button
-                onClick={handleApply}
-                className="w-full py-3.5 px-4 text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-lg shadow-amber-500/10 mb-3"
-              >
-                <span>{t.estimator.applyEstimate}</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="space-y-3">
+                <button
+                  type="button"
+                  onClick={handleApply}
+                  className="w-full py-3.5 px-4 bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-slate-950 font-bold text-xs sm:text-sm rounded-xl transition-all shadow-lg shadow-amber-400/20 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span>{t.estimator.applyEstimate}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
 
-              <div className="grid grid-cols-2 gap-2 pt-2">
                 <a
                   href={`tel:${SHOP_INFO.phone1}`}
-                  className="py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white rounded-lg text-center flex items-center justify-center gap-1.5"
+                  className="w-full py-3 px-4 bg-slate-800 hover:bg-slate-750 text-white font-semibold text-xs sm:text-sm rounded-xl transition-colors border border-slate-700 flex items-center justify-center gap-2"
                 >
-                  <Phone className="w-3.5 h-3.5 text-amber-400" />
-                  <span>{SHOP_INFO.phone1}</span>
-                </a>
-                <a
-                  href={`https://wa.me/${SHOP_INFO.phone1Raw}?text=${encodeURIComponent(
-                    `नमस्कार, मला ${selectedService} साठी अंदाजे ₹${est.min}-₹${est.max} च्या कामाची चौकशी करायची आहे.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="py-2.5 px-3 bg-emerald-800 hover:bg-emerald-700 text-xs font-bold text-white rounded-lg text-center flex items-center justify-center gap-1.5"
-                >
-                  <MessageSquare className="w-3.5 h-3.5 text-emerald-300" />
-                  <span>WhatsApp</span>
+                  <Phone className="w-4 h-4 text-amber-400" />
+                  <span>{t.estimator.callDirect}: {SHOP_INFO.phone1}</span>
                 </a>
               </div>
             </div>

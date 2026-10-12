@@ -79,10 +79,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </a>
 
-          {/* Zone 2: 4-5 clean single-line text navigation links */}
+          {/* Zone 2: clean single-line text navigation links */}
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
             <a href="#services" className="hover:text-amber-400 transition-colors whitespace-nowrap shrink-0">
               {t.nav.services}
+            </a>
+            <a href="#rates" className="hover:text-amber-400 text-amber-300 transition-colors whitespace-nowrap shrink-0 font-semibold flex items-center gap-1">
+              <span>⚡ {t.nav.rates}</span>
             </a>
             <a href="#projects" className="hover:text-amber-400 transition-colors whitespace-nowrap shrink-0">
               {t.nav.projects}
@@ -152,6 +155,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="px-3 py-2 rounded-lg hover:bg-slate-900 hover:text-amber-400 transition-colors"
             >
               {t.nav.services}
+            </a>
+            <a
+              href="#rates"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-lg hover:bg-slate-900 text-amber-300 font-semibold transition-colors flex items-center gap-1.5"
+            >
+              <span>⚡ {t.nav.rates}</span>
             </a>
             <a
               href="#projects"

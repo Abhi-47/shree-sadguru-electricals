@@ -3,10 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { EmergencyBanner } from './components/EmergencyBanner';
 import { HeroSection } from './components/HeroSection';
+import { RateCardSection } from './components/RateCardSection';
 import { ServicesSection } from './components/ServicesSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { CostEstimator } from './components/CostEstimator';
@@ -41,6 +42,11 @@ export default function App() {
     } catch {
       // ignore
     }
+  };
+
+  const scrollToRates = () => {
+    const el = document.getElementById('rates');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToEstimator = () => {
@@ -87,32 +93,39 @@ export default function App() {
           currentLang={currentLang}
           onScrollToEstimator={scrollToEstimator}
           onScrollToContact={scrollToContact}
+          onScrollToRates={scrollToRates}
         />
 
-        {/* Services & Capabilities */}
+        {/* Transparent & Lowered Rate Card Section */}
+        <RateCardSection
+          currentLang={currentLang}
+          onBookRateItem={handleBookServiceDirect}
+        />
+
+        {/* 100% Home Services & Capabilities */}
         <ServicesSection
           currentLang={currentLang}
           onSelectServiceForEstimate={handleSelectServiceForEstimate}
           onBookServiceDirect={handleBookServiceDirect}
         />
 
-        {/* Project Photos & Before/After Slider */}
+        {/* Project Photos & Before/After Slider with Lightbox */}
         <ProjectsSection
           currentLang={currentLang}
           onSelectProjectForEstimate={scrollToEstimator}
         />
 
-        {/* Cost Estimator in INR (₹) */}
+        {/* Cost Estimator in INR (₹) with Lowered Rates */}
         <CostEstimator
           currentLang={currentLang}
           initialServiceId={targetEstimatorService}
           onApplyEstimateToContact={handleApplyEstimateToContact}
         />
 
-        {/* Why Choose Shree Sadguru Electricals (Independent Shop Credentials) */}
+        {/* Why Choose Shree Sadguru Electricals (100% Home Service & Low Prices) */}
         <CredentialsSection currentLang={currentLang} />
 
-        {/* Verified Local Reviews from Beed Farmers & Homeowners */}
+        {/* Verified Local Reviews from Beed Families */}
         <TestimonialsSection currentLang={currentLang} />
 
         {/* FAQ Section */}
@@ -133,25 +146,25 @@ export default function App() {
       <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 border-t border-slate-800 p-2.5 flex items-center gap-2 backdrop-blur-md">
         <a
           href={`tel:${SHOP_INFO.phone1}`}
-          className="flex-1 py-2.5 bg-amber-400 text-slate-950 font-bold text-xs rounded-lg text-center flex items-center justify-center gap-1.5 shadow-md"
+          className="flex-1 py-2.5 bg-amber-400 text-slate-950 font-bold text-xs rounded-xl text-center flex items-center justify-center gap-1.5 shadow-md shadow-amber-400/20"
         >
           <span>📞 {SHOP_INFO.phone1}</span>
         </a>
         <a
           href={`tel:${SHOP_INFO.phone2}`}
-          className="flex-1 py-2.5 bg-slate-800 text-white font-bold text-xs rounded-lg text-center flex items-center justify-center gap-1.5 border border-slate-700"
+          className="flex-1 py-2.5 bg-slate-800 text-white font-bold text-xs rounded-xl text-center flex items-center justify-center gap-1.5 border border-slate-700"
         >
           <span>📞 {SHOP_INFO.phone2}</span>
         </a>
         <a
           href={`https://wa.me/${SHOP_INFO.phone1Raw}?text=${encodeURIComponent(
             currentLang === 'mr'
-              ? 'नमस्कार, मला श्री सद्गुरु इलेक्ट्रिकल्स यांच्याकडून कामाची माहिती हवी आहे.'
-              : 'Hello, I want to inquire about electrical work from Shree Sadguru Electricals.'
+              ? 'नमस्कार, मला श्री सद्गुरु इलेक्ट्रिकल्स यांच्याकडून घरगुती कामाची माहिती हवी आहे.'
+              : 'Hello, I want to inquire about home electrical work from Shree Sadguru Electricals.'
           )}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2.5 bg-emerald-600 text-white rounded-lg flex items-center justify-center shrink-0"
+          className="p-2.5 bg-emerald-600 text-white rounded-xl flex items-center justify-center shrink-0 shadow-md shadow-emerald-600/20"
           aria-label="WhatsApp"
         >
           <span className="text-sm">💬</span>

@@ -26,8 +26,8 @@ export const EmergencyBanner: React.FC<{ currentLang: Language }> = ({ currentLa
             </div>
             <p className="text-xs text-slate-300 mt-0.5">
               {currentLang === 'mr'
-                ? 'घरातून जळका वास, शॉर्ट सर्किट, मेन फ्युज उडणे किंवा शेतातील पाणी अडकल्यास लगेच फोन करा.'
-                : 'Burnt smell, sudden short circuits, blown main fuses, or farm motor tripping? Call now.'}
+                ? 'घरातून जळका वास, शॉर्ट सर्किट, मेन फ्युज उडणे किंवा सतत MCB ट्रिप होत असल्यास लगेच फोन करा.'
+                : 'Burnt smell, sudden short circuits, blown main fuses, or home MCB tripping? Call now.'}
             </p>
           </div>
         </div>

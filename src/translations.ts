@@ -14,9 +14,9 @@ export interface Translations {
 
   nav: {
     services: string;
+    rates: string;
     projects: string;
     estimator: string;
-    aboutShop: string;
     contact: string;
     callNow: string;
     langToggle: string;
@@ -26,33 +26,47 @@ export interface Translations {
     badge: string;
     title: string;
     subtitle: string;
+    homeServiceNotice: string;
     callButton: string;
     whatsappButton: string;
     estimatorButton: string;
-    shopNotice: string;
+    ratesButton: string;
     stats: {
       experience: string;
       experienceLabel: string;
       satisfiedClients: string;
       satisfiedLabel: string;
-      sameDay: string;
-      sameDayLabel: string;
-      warranty: string;
-      warrantyLabel: string;
+      ratePromise: string;
+      ratePromiseLabel: string;
+      homeVisit: string;
+      homeVisitLabel: string;
     };
   };
 
-  shopHighlights: {
+  homeServiceBadge: {
     title: string;
     desc: string;
-    item1Title: string;
-    item1Desc: string;
-    item2Title: string;
-    item2Desc: string;
-    item3Title: string;
-    item3Desc: string;
-    item4Title: string;
-    item4Desc: string;
+    point1: string;
+    point2: string;
+    point3: string;
+  };
+
+  rateCard: {
+    kicker: string;
+    title: string;
+    subtitle: string;
+    notice: string;
+    callForWork: string;
+    colService: string;
+    colRate: string;
+    colTime: string;
+    items: {
+      name: string;
+      rate: string;
+      desc: string;
+      time: string;
+      badge?: string;
+    }[];
   };
 
   services: {
@@ -62,10 +76,11 @@ export interface Translations {
     tabs: {
       all: string;
       houseWiring: string;
-      agriculture: string;
+      homeRepair: string;
       inverter: string;
-      repairRewinding: string;
-      commercial: string;
+      waterMotor: string;
+      faultFinding: string;
+      earthing: string;
     };
     startingFrom: string;
     viewDetails: string;
@@ -80,8 +95,8 @@ export interface Translations {
     sliderSubtitle: string;
     beforeLabel: string;
     afterLabel: string;
-    sliderNotice: string;
     inspectDetails: string;
+    clickToEnlarge: string;
   };
 
   estimator: {
@@ -92,10 +107,10 @@ export interface Translations {
     step2: string;
     step3: string;
     step4: string;
-    step5: string;
     estimatedTotal: string;
     rangeNote: string;
     applyEstimate: string;
+    callDirect: string;
   };
 
   contact: {
@@ -103,7 +118,6 @@ export interface Translations {
     title: string;
     subtitle: string;
     shopInfoTitle: string;
-    ownerName: string;
     addressLabel: string;
     shopAddress: string;
     timingLabel: string;
@@ -116,9 +130,7 @@ export interface Translations {
     phoneLabel: string;
     villageOrAreaLabel: string;
     serviceLabel: string;
-    urgencyLabel: string;
     detailsLabel: string;
-    attachPhoto: string;
     submitButton: string;
     directCallTitle: string;
   };
@@ -130,12 +142,11 @@ export interface Translations {
   };
 
   footer: {
-    about: string;
-    quickLinks: string;
-    topServices: string;
-    directContact: string;
+    desc: string;
+    homeNotice: string;
     copyright: string;
-    disclaimer: string;
+    phoneTitle: string;
+    addressTitle: string;
   };
 }
 
@@ -143,278 +154,422 @@ export const translations: Record<Language, Translations> = {
   mr: {
     shopName: 'श्री सद्गुरु इलेक्ट्रिकल्स',
     shopNameEn: 'Shree Sadguru Electricals',
-    shopType: 'स्वतंत्र इलेक्ट्रिकल दुकान व इलेक्ट्रिशियन सेवा (बीड)',
-    shopTagline: 'बीड शहर व परिसरातील घरगुती, शेती व व्यावसायिक कामांसाठी विश्वासू इलेक्ट्रिशियन',
+    shopType: 'स्वतंत्र घरगुती इलेक्ट्रिशियन सेवा (Independent Home Electrician)',
+    shopTagline: 'बीड शहर • १००% घरपोच सेवा • अतिशय वाजवी व परवडणारे दर',
     locationBeed: 'बीड शहर, महाराष्ट्र',
     phone1: '8080795343',
     phone2: '9975094847',
     phone1Raw: '918080795343',
     phone2Raw: '919975094847',
-    whatsappMessage: 'नमस्कार, मला श्री सद्गुरु इलेक्ट्रिकल्स यांच्याकडून इलेक्ट्रिकल कामाची माहिती हवी आहे.',
+    whatsappMessage: 'नमस्कार, मला घरातील इलेक्ट्रिकल कामासाठी आपली मदत हवी आहे.',
 
     nav: {
-      services: 'आमच्या सेवा',
-      projects: 'कामांचे फोटो',
-      estimator: 'अंदाजे खर्च कॅल्क्युलेटर',
-      aboutShop: 'दुकानाची माहिती',
-      contact: 'संपर्क व पत्ता',
+      services: 'घरगुती सेवा',
+      rates: 'दर तक्ता',
+      projects: 'केलेली कामे',
+      estimator: 'अंदाजे खर्च',
+      contact: 'संपर्क',
       callNow: 'कॉल करा',
       langToggle: 'English',
     },
 
     hero: {
-      badge: 'स्वतंत्र दुकान · बीड शहर व ग्रामीण परिसर · त्वरित सेवा',
-      title: 'घरगुती वायरिंग, शेती बोरवेल स्टार्टर व संपूर्ण इलेक्ट्रिकल कामे',
-      subtitle: 'आम्ही कोणतीही मोठी कंपनी नसून बीडमधील तुमचे स्वतःचे हक्काचे स्वतंत्र इलेक्ट्रिकल दुकान आहोत. उत्तम दर्जाची फिटिंग, सुरक्षित काम आणि वाजवी दरात सर्व प्रकारची दुरुस्ती.',
-      callButton: 'थेट फोन करा: 8080795343',
-      whatsappButton: 'व्हॉट्सअॅपवर मेसेज करा',
-      estimatorButton: 'कामाचा खर्च अंदाज पहा',
-      shopNotice: 'नोंद: आम्ही स्वतंत्र इलेक्ट्रिशियन व दुकान आहोत (No Corporate Agency) · अस्सल काम, रास्त दर',
+      badge: '🏠 फक्त घरगुती सेवा • कमर्शियल कामे नाही करत • बीड शहर',
+      title: 'घरातील प्रत्येक इलेक्ट्रिकल कामासाठी विश्वासू, जलद व वाजवी सेवा',
+      subtitle:
+        'आम्ही कंपनी नाही, बीड शहरातील आपले स्वतंत्र व स्थानिक इलेक्ट्रिशियन आहोत. फक्त एका फोनवर थेट आपल्या घरी येऊन काम करतो. बाजारातील दरांपेक्षा खूप कमी आणि पारदर्शक दरात खात्रीशीर काम!',
+      homeServiceNotice:
+        'विशेष नोंद: आम्ही फक्त घरगुती (Home Service) कामे करतो, मोठी कमर्शियल किंवा कारखान्यांची कामे करत नाही.',
+      callButton: 'थेट कॉल करा',
+      whatsappButton: 'व्हॉट्सॲपवर सांगा',
+      estimatorButton: 'अंदाजे बिल काढा',
+      ratesButton: 'किफायतशीर दर पहा',
       stats: {
-        experience: '१२+ वर्षे',
-        experienceLabel: 'अनुभवी काम',
-        satisfiedClients: '१,८००+',
-        satisfiedLabel: 'समाधानी ग्राहक व शेतकरी',
-        sameDay: 'त्याच दिवशी',
-        sameDayLabel: 'बीड शहरात जलद सेवा',
-        warranty: '१००%',
-        warrantyLabel: 'सुरक्षित व खात्रीशीर काम',
+        experience: '१०+ वर्षे',
+        experienceLabel: 'स्थानिक कामाचा अनुभव',
+        satisfiedClients: '१०००+',
+        satisfiedLabel: 'समाधानी कुटुंबे बीडमध्ये',
+        ratePromise: '₹६० पासून',
+        ratePromiseLabel: 'किफायतशीर व रास्त दर',
+        homeVisit: '१५-३० मि.',
+        homeVisitLabel: 'तातडीने घरपोच हजेरी',
       },
     },
 
-    shopHighlights: {
-      title: 'श्री सद्गुरु इलेक्ट्रिकल्सच का निवडावे?',
-      desc: 'मध्यस्थ किंवा एजंटशिवाय थेट कारागिराशी बोला व दर्जेदार काम करून घ्या.',
-      item1Title: 'स्वतंत्र दुकान व थेट संपर्क',
-      item1Desc: 'कोणत्याही कंपनीचे कमिशन नाही, थेट आम्हास फोन करा व योग्य सल्ला आणि योग्य दर मिळवा.',
-      item2Title: 'शेती बोरवेल व मोटरमध्ये तज्ज्ञ',
-      item2Desc: 'बीड जिल्ह्यातील शेतकऱ्यांसाठी सबमर्सिबल पंप, स्टार्टर पॅनेल, सिंगल फेजिंग प्रिव्हेंटर व ऑटो-स्विच फिटिंग.',
-      item3Title: 'ओरिजिनल ब्रँडेड साहित्याचा वापर',
-      item3Desc: 'पॉलिकॅब (Polycab), फिनोलेक्स (Finolex), अँकर (Anchor), एल अँड टी (L&T) आदी नामांकित आयएसआय साहित्याचा वापर.',
-      item4Title: 'इमर्जन्सी व २४ तास मदत',
-      item4Desc: 'शॉर्ट सर्किट, वीज जाणे, स्टार्टर ट्रिप होणे किंवा मीटर जळणे यावर बीडमध्ये तात्काळ धाव.',
+    homeServiceBadge: {
+      title: 'आम्ही फक्त घरगुती सेवा (Home Service) का देतो?',
+      desc: 'मोठ्या कंत्राटांमध्ये न अडकता, बीड शहरातील सामान्य कुटुंबांना तातडीने व कमीत कमी खर्चात सेवा मिळावी हाच आमचा प्रामाणिक उद्देश आहे.',
+      point1: 'घरी येऊन जागेवर काम - पंखे, बोर्ड किंवा उपकरणे कुठेही घेऊन जाण्याची गरज नाही',
+      point2: 'बाजारातील वाढीव दरांऐवजी स्थानिक आणि अगदी वाजवी मजुरी दर',
+      point3: 'शॉर्ट सर्किट किंवा इमर्जन्सीमध्ये बीड शहरात १५ ते ३० मिनिटांत घरपोच धाव',
+    },
+
+    rateCard: {
+      kicker: 'पारदर्शक व कमी केलेले दर',
+      title: 'घरगुती इलेक्ट्रिकल सेवा - दर तक्ता',
+      subtitle: 'कोणतेही छुपे शुल्क नाही. बीड शहरातील कुटुंबांसाठी अगदी रास्त व परवडणारे मजुरी दर.',
+      notice: 'टीप: वरील दर फक्त मजुरीचे आहेत. साहित्य (सामान) आपले असेल किंवा आम्ही वाजवी दरात मूळ बिल देऊन आणू शकतो.',
+      callForWork: 'काम ठरवण्यासाठी लगेच कॉल करा',
+      colService: 'कामाचा प्रकार',
+      colRate: 'वाजवी मजुरी दर',
+      colTime: 'वेळ',
+      items: [
+        {
+          name: 'सीलिंग फॅन फिटिंग / हँगिंग',
+          rate: '₹ ६० - ₹ ८० / फॅन',
+          desc: 'फॅन बसवणे, रॉड फिटिंग व रेग्युलेटर कनेक्शन',
+          time: '२०-३० मि.',
+          badge: 'सर्वात लोकप्रिय',
+        },
+        {
+          name: 'साधा / मॉड्युलर स्विच किंवा सॉकेट बदलणे',
+          rate: '₹ ३० - ₹ ५० / पीस',
+          desc: 'जळलेला स्विच बदलणे, सॉकेट दुरुस्ती',
+          time: '१५ मि.',
+        },
+        {
+          name: 'मॉड्युलर बोर्ड जोडणी / दुरुस्ती',
+          rate: '₹ ८० - ₹ १२० / बोर्ड',
+          desc: 'नवीन बोर्ड बसवणे किंवा जुन्या बोर्डचे अंतर्गत वायरिंग दुरुस्ती',
+          time: '३०-४५ मि.',
+        },
+        {
+          name: 'कन्सिल्ड पॉईंट वायरिंग (Concealed Point)',
+          rate: '₹ ९० - ₹ १२० / पॉईंट',
+          desc: 'नवीन घर किंवा खोलीसाठी झिर्री पाईप व सुरक्षित पॉईंट वायरिंग',
+          time: '१-२ दिवस',
+          badge: 'कमी केलेला दर',
+        },
+        {
+          name: 'बाथरूम गिझर / हिटर फिटिंग',
+          rate: '₹ १५० - ₹ २०० / गिझर',
+          desc: 'भिंतीवर हँगिंग, वॉटरप्रूफ १६A पॉवर कनेक्शन व अर्थिंग चेक',
+          time: '४५ मि.',
+        },
+        {
+          name: 'घरगुती इन्व्हर्टर व बॅटरी कनेक्शन',
+          rate: '₹ २०० - ₹ २८० / सेटअप',
+          desc: 'इन्व्हर्टर लोड सेपरेशन वायरिंग, बॅटरी केबल्स व बायपास स्विच',
+          time: '१-२ तास',
+          badge: 'परवडणारा दर',
+        },
+        {
+          name: 'घरातील पाण्याची मोटर / मोनोब्लॉक पंप फिटिंग',
+          rate: '₹ १५० - ₹ १८० / मोटर',
+          desc: 'घरगुती पाण्याची मोटर कनेक्शन, स्टार्टर कॅपॅसिटर तपासणी',
+          time: '३०-४५ मि.',
+        },
+        {
+          name: 'शॉर्ट सर्किट शोधणे / फ्युज व MCB दुरुस्ती',
+          rate: '₹ ८० - ₹ १००',
+          desc: 'सतत ट्रिप होणारा MCB, वीज गळती शोधणे व तात्काळ वीज सुरू करणे',
+          time: '३० मि.',
+        },
+        {
+          name: 'घरगुती सेफ अर्थिंग काम',
+          rate: '₹ ४५० - ₹ ६००',
+          desc: 'शॉकपासून संरक्षणासाठी कॉपर/केमिकल अर्थिंग पाईप फिटिंग',
+          time: '२-३ तास',
+        },
+        {
+          name: 'घरपोच व्हिजिट / तपासणी फी (Inspection)',
+          rate: 'फक्त ₹ ८० - ₹ १००',
+          desc: 'बीड शहरात घरी येऊन सर्व वायरिंग तपासणे (मोठे काम असल्यास बिलात ॲडजस्ट)',
+          time: '२० मि.',
+        },
+      ],
     },
 
     services: {
-      kicker: 'आमची कामे व सेवा',
-      title: 'सर्व प्रकारची इलेक्ट्रिकल सेवा एकाच छताखाली',
-      subtitle: 'घरातील नवीन वायरिंगपासून शेतातील बोरवेल मोटरपर्यंत सर्व कामे कुशलतेने केली जातात.',
+      kicker: 'आमच्या सेवा',
+      title: '१००% घरपोच इलेक्ट्रिकल कामे',
+      subtitle: 'आपल्या घरासाठी आवश्यक असणारी सर्व इलेक्ट्रिकल कामे एकाच ठिकाणी, रास्त दरात.',
       tabs: {
-        all: 'सर्व कामे',
+        all: 'सर्व सेवा',
         houseWiring: 'घरगुती वायरिंग',
-        agriculture: 'शेती बोरवेल स्टार्टर',
+        homeRepair: 'फॅन, गिझर व उपकरणे',
         inverter: 'इन्व्हर्टर व बॅटरी',
-        repairRewinding: 'मोटर/फॅन रिवाइंडिंग',
-        commercial: 'दुकान व ३-फेज',
+        waterMotor: 'पाण्याची मोटर',
+        faultFinding: 'फॉल्ट व शॉर्ट सर्किट',
+        earthing: 'घरगुती अर्थिंग',
       },
-      startingFrom: 'किमान दर',
-      viewDetails: 'तपशील पहा',
-      bookService: 'काम सांगा',
+      startingFrom: 'दर सुरुवात',
+      viewDetails: 'सविस्तर माहिती',
+      bookService: 'घरपोच बोलवा',
     },
 
     projects: {
-      kicker: 'प्रत्यक्ष कामांचे फोटो व पुरावा',
-      title: 'आम्ही बीडमध्ये केलेली प्रत्यक्ष कामे',
-      subtitle: 'प्रत्येक कामात अचूक वायर फिटिंग, सुरक्षित एमसीबी व नीटनेटकेपणा हीच आमची ओळख.',
-      sliderTitle: 'जुने जळके फ्यूज बोर्ड vs नवीन मॉड्युलर एमसीबी पॅनेल',
-      sliderSubtitle: 'स्लायडर सरकवून कामातील दर्जा व बदल स्वतः पहा',
-      beforeLabel: 'आधी: जुना जळका बोर्ड (धोकादायक)',
-      afterLabel: 'नंतर: नवीन मॉड्युलर एमसीबी बॉक्स',
-      sliderNotice: 'स्लायडर डावीकडे-उजवीकडे ओढून बघा',
-      inspectDetails: 'कामाचा संपूर्ण तपशील पहा',
+      kicker: 'कामाचे नमुने',
+      title: 'बीड शहरातील घरांमध्ये केलेली कामे',
+      subtitle: 'आम्ही स्वतः केलेल्या प्रत्यक्ष घरगुती कामांचे फोटो व तांत्रिक माहिती.',
+      sliderTitle: 'काम कसे सुधारले? (Before / After)',
+      sliderSubtitle: 'जुन्या धोकादायक लाकडी बोर्डाचे रूपांतर सुरक्षित मॉड्युलर बोर्डमध्ये',
+      beforeLabel: 'आधी: जुना धोकादायक बोर्ड',
+      afterLabel: 'नंतर: सुरक्षित अँकर रोमा मॉड्युलर बोर्ड',
+      inspectDetails: 'कामाचा तपशील पहा',
+      clickToEnlarge: 'मोठ्या आकारात पाहण्यासाठी फोटोवर क्लिक करा',
     },
 
     estimator: {
-      kicker: 'पारदर्शक खर्च अंदाज',
-      title: 'तुमच्या कामाचा अंदाजे खर्च (₹) तपासा',
-      subtitle: 'कामाचा प्रकार निवडा आणि साहित्यासह किंवा फक्त मजुरीचा अंदाजे खर्च लगेच जाणून घ्या.',
+      kicker: 'कमी केलेले दर कॅल्क्युलेटर',
+      title: 'घरगुती कामाचा अंदाजे खर्च तपासा',
+      subtitle: 'आपल्याला हवे असलेले काम निवडा आणि तात्काळ वाजवी खर्चाचा अंदाज मिळवा.',
       step1: '१. कामाचा प्रकार निवडा',
-      step2: '२. मालमत्तेचा प्रकार',
-      step3: '३. साहित्याची निवड',
-      step4: '४. कामाची निकड (तात्काळ / नियोजित)',
-      step5: '५. अतिरिक्त फिटिंग व सुरक्षितता',
-      estimatedTotal: 'अंदाजे खर्च मर्यादा',
-      rangeNote: 'अचूक कोटेशन जागेवर प्रत्यक्ष पाहणी केल्यावर अंतिम केले जाईल.',
-      applyEstimate: 'हा अंदाज घेऊन संपर्क करा',
+      step2: '२. कामाचे प्रमाण निवडा',
+      step3: '३. तातडीची निकड',
+      step4: '४. अतिरिक्त सोयी निवडा',
+      estimatedTotal: 'अंदाजे वाजवी मजुरी खर्च',
+      rangeNote: 'हा दर घरपोच सेवेचा अंदाजे मजुरी खर्च आहे. प्रत्यक्ष पाहणीनंतर अचूक सांगता येईल.',
+      applyEstimate: 'हे काम ठरवण्यासाठी संपर्क करा',
+      callDirect: 'थेट फोन करून बुक करा',
     },
 
     contact: {
-      kicker: 'थेट संपर्क साधा',
-      title: 'काम सांगण्यासाठी किंवा चौकशीसाठी फोन करा',
-      subtitle: 'बीड शहर अथवा परिसरातील कोणत्याही कामासाठी कधीही कॉल करा अथवा व्हॉट्सअॅप करा.',
-      shopInfoTitle: 'दुकानाचा पत्ता व संपर्क तपशील',
-      ownerName: 'मालक व इलेक्ट्रिशियन: श्री सद्गुरु इलेक्ट्रिकल्स',
-      addressLabel: 'पत्ता',
-      shopAddress: 'श्री सद्गुरु इलेक्ट्रिकल्स, बीड शहर, जिल्हा बीड, महाराष्ट्र (पिन: ४३११२२)',
-      timingLabel: 'वेळ',
-      shopTiming: 'सकाळी ७:०० ते रात्री ९:०० (सर्व दिवस उघडे) · इमर्जन्सीसाठी २४ तास उपलब्ध',
-      areasCovered: 'सेवा क्षेत्र',
-      areasList: 'बीड शहर, सुभाष रोड, जालना रोड, नगर रोड, शिवाजी चौक, शाहू नगर, एमआयडीसी बीड, आष्टी फाटा, पाटोदा परिसर व लगतची गावे',
-      formTitle: 'इलेक्ट्रिशियन बोलावण्यासाठी माहिती भरा',
-      formSubtitle: 'माहिती पाठवताच आम्ही १० ते १५ मिनिटांत तुम्हाला फोन करू.',
-      nameLabel: 'तुमचे नाव *',
+      kicker: 'थेट संपर्क',
+      title: 'एका फोनवर आम्ही आपल्या घरी हजर!',
+      subtitle: 'बीड शहरात कुठेही असला तरी थेट कॉल किंवा व्हॉट्सॲप करा, आम्ही वेळेत पोहोचू.',
+      shopInfoTitle: 'इलेक्ट्रिशियन संपर्क माहिती',
+      addressLabel: 'पत्ता / मुख्य केंद्र:',
+      shopAddress: 'श्री सद्गुरु इलेक्ट्रिकल्स, बीड शहर, जिल्हा बीड, महाराष्ट्र - ४३११२२',
+      timingLabel: 'वेळ:',
+      shopTiming: 'सकाळी ७:०० ते रात्री ९:०० (सर्व दिवस घरपोच सेवा उपलब्ध)',
+      areasCovered: 'सेवा क्षेत्र (बीड शहर व लगतचा परिसर):',
+      areasList:
+        'सुभाष रोड, जालना रोड, नगर रोड, शिवाजी चौक, शाहू नगर, बिंदुसरा परिसर, पाटोदा रोड, कारंजा चौक व संपूर्ण बीड शहर.',
+      formTitle: 'घरपोच सेवेसाठी नाव व पत्ता पाठवा',
+      formSubtitle: 'माहिती भरताच आम्ही तुम्हाला त्वरित फोन करून वेळ निश्चित करू.',
+      nameLabel: 'आपले नाव *',
       phoneLabel: 'मोबाईल नंबर *',
-      villageOrAreaLabel: 'पत्ता / गल्ली / गाव (बीड परिसर)',
-      serviceLabel: 'कामाचा प्रकार',
-      urgencyLabel: 'कामाची घाई',
-      detailsLabel: 'कामाबद्दल थोडी माहिती (उदा. २ खोल्यांचे वायरिंग / बोरवेल स्टार्टर जळणे / इन्व्हर्टर बसवणे)',
-      attachPhoto: 'कामाचा / मीटरचा फोटो जोडा (पर्यायी)',
-      submitButton: 'माहिती पाठवा व इलेक्ट्रिशियन बुक करा',
-      directCallTitle: 'तातडीच्या कामासाठी थेट फोन लावा:',
+      villageOrAreaLabel: 'घराचा पत्ता / परिसर (बीड शहर) *',
+      serviceLabel: 'कामाचा प्रकार *',
+      detailsLabel: 'काही विशेष अडचण असल्यास लिहा',
+      submitButton: 'घरपोच व्हिजिटसाठी विनंती पाठवा',
+      directCallTitle: 'तातडीचे काम असल्यास थेट कॉल करा:',
     },
 
     faq: {
-      kicker: 'वारंवार विचारले जाणारे प्रश्न',
-      title: 'ग्राहकांचे नेहमीचे प्रश्न व उत्तरे',
-      subtitle: 'वायरिंग, साहित्य, महावितरण मीटर व मोटर संदर्भातील महत्त्वाची माहिती.',
+      kicker: 'नेहमी विचारले जाणारे प्रश्न',
+      title: 'आपल्या मनातील शंका व उत्तरे',
+      subtitle: 'घरगुती कामे, दर आणि व्हिजिट बाबतची स्पष्ट माहिती.',
     },
 
     footer: {
-      about: 'श्री सद्गुरु इलेक्ट्रिकल्स हे बीड शहरातील स्वतंत्र इलेक्ट्रिकल दुकान व इलेक्ट्रिशियन सेवा केंद्र आहे. घरगुती वायरिंग, शेती बोरवेल, इन्व्हर्टर आणि सर्व प्रकारच्या इलेक्ट्रिकल कामांसाठी आम्ही नेहमी तत्पर आहोत.',
-      quickLinks: 'महत्त्वाच्या लिंक्स',
-      topServices: 'प्रमुख सेवा',
-      directContact: 'थेट संपर्क क्रमांक',
-      copyright: 'सर्व हक्क राखीव. श्री सद्गुरु इलेक्ट्रिकल्स, बीड, महाराष्ट्र.',
-      disclaimer: 'नोंद: आम्ही बीडमधील स्थानिक स्वतंत्र इलेक्ट्रिकल दुकान आहोत. सर्व कामे अनुभवी तंत्रज्ञांमार्फत केली जातात.',
+      desc: 'श्री सद्गुरु इलेक्ट्रिकल्स - बीड शहरातील आपल्या विश्वासातील स्वतंत्र घरगुती इलेक्ट्रिशियन. सुरक्षित, दर्जेदार आणि वाजवी दरातील काम.',
+      homeNotice: 'टीप: आम्ही फक्त घरगुती (Home Service) कामे करतो, कमर्शियल कंत्राटे घेतली जात नाहीत.',
+      copyright: 'सर्व हक्क सुरक्षित © २०२६ श्री सद्गुरु इलेक्ट्रिकल्स, बीड.',
+      phoneTitle: 'थेट संपर्क क्रमांक',
+      addressTitle: 'पत्ता व कार्यक्षेत्र',
     },
   },
 
   en: {
     shopName: 'Shree Sadguru Electricals',
     shopNameEn: 'Shree Sadguru Electricals',
-    shopType: 'Independent Electrical Shop & Electrician Services (Beed)',
-    shopTagline: 'Trusted Local Electrician for Home, Farm & Commercial Wiring in Beed City & Rural District',
+    shopType: 'Independent Residential Home Electrician',
+    shopTagline: 'Beed City • 100% Doorstep Home Service • Highly Affordable Rates',
     locationBeed: 'Beed City, Maharashtra',
     phone1: '8080795343',
     phone2: '9975094847',
     phone1Raw: '918080795343',
     phone2Raw: '919975094847',
-    whatsappMessage: 'Hello, I would like to inquire about electrical work from Shree Sadguru Electricals, Beed.',
+    whatsappMessage: 'Hello, I need assistance with home electrical work.',
 
     nav: {
-      services: 'Services',
-      projects: 'Work Photos',
+      services: 'Home Services',
+      rates: 'Rate Card',
+      projects: 'Projects',
       estimator: 'Cost Estimator',
-      aboutShop: 'About Shop',
-      contact: 'Contact & Shop',
+      contact: 'Contact',
       callNow: 'Call Now',
       langToggle: 'मराठी',
     },
 
     hero: {
-      badge: 'Independent Shop · Beed City & Rural Area · Fast On-Site Service',
-      title: 'House Concealed Wiring, Borewell Starters & All Electrical Work',
-      subtitle: 'We are an independent, family-run electrical shop based in Beed city, Maharashtra (not a corporate agency). Providing genuine quality wiring, safe fitting, and honest pricing across Beed district.',
-      callButton: 'Call Direct: 8080795343',
+      badge: '🏠 100% Home Service Only • No Commercial Contracts • Beed City',
+      title: 'Reliable, Prompt & Affordable Doorstep Electrical Services for Your Home',
+      subtitle:
+        'We are not a corporation — we are your independent local electrician shop right in Beed city. Just one call and we arrive at your doorstep. Safe, neat electrical work at honest, lowered local prices.',
+      homeServiceNotice:
+        'Important Notice: We exclusively provide Residential Home Services; we do not take large commercial or factory contracts.',
+      callButton: 'Call Now',
       whatsappButton: 'Chat on WhatsApp',
-      estimatorButton: 'Check Cost Estimate',
-      shopNotice: 'Note: We are an independent electrical shop & licensed technician in Beed (No Middlemen) · Honest Rates',
+      estimatorButton: 'Estimate Bill',
+      ratesButton: 'View Low Rates',
       stats: {
-        experience: '12+ Years',
-        experienceLabel: 'Trade Experience',
-        satisfiedClients: '1,800+',
-        satisfiedLabel: 'Happy Families & Farmers',
-        sameDay: 'Same Day',
-        sameDayLabel: 'Rapid Beed City Dispatch',
-        warranty: '100%',
-        warrantyLabel: 'Safe & Guaranteed Work',
+        experience: '10+ Years',
+        experienceLabel: 'Local Field Experience',
+        satisfiedClients: '1000+',
+        satisfiedLabel: 'Happy Families in Beed',
+        ratePromise: 'From ₹60',
+        ratePromiseLabel: 'Lowered Honest Rates',
+        homeVisit: '15-30 Min',
+        homeVisitLabel: 'Quick Doorstep Arrival',
       },
     },
 
-    shopHighlights: {
-      title: 'Why Choose Shree Sadguru Electricals?',
-      desc: 'Direct interaction with experienced local technicians with no agency commission.',
-      item1Title: 'Independent Local Shop',
-      item1Desc: 'Speak directly with us without any middleman. Honest guidance, fair quotes, and reliable service.',
-      item2Title: 'Farm & Borewell Specialists',
-      item2Desc: 'Expert in agricultural submersible starters, capacitor banks, single-phasing preventers, and auto-switches.',
-      item3Title: '100% Original Brand Materials',
-      item3Desc: 'We supply and use trusted ISI brands: Polycab, Finolex, Anchor, L&T, Havells, Schneider, and Crompton.',
-      item4Title: 'Fast Emergency Response',
-      item4Desc: 'Rapid troubleshooting for short circuits, tripped MCBs, burnt fuse boards, and power failures in Beed.',
+    homeServiceBadge: {
+      title: 'Why Do We Exclusively Do Home Service?',
+      desc: 'By avoiding complicated corporate commercial contracts, we stay 100% available for local families in Beed city to deliver fast and affordable doorstep solutions.',
+      point1: 'Doorstep on-site repairs - No need to carry heavy fans, boards or heaters to outside shops',
+      point2: 'Substantially lower labor rates compared to market contractor rates',
+      point3: 'Rapid emergency response across Beed city in 15 to 30 minutes for tripping and short circuits',
+    },
+
+    rateCard: {
+      kicker: 'Transparent Lowered Prices',
+      title: 'Home Electrical Service Rate Card',
+      subtitle: 'Zero hidden fees. Clean, budget-friendly labor rates for residents across Beed city.',
+      notice: 'Note: Prices shown are for skilled labor only. Electrical materials can be supplied by you or brought by us at genuine wholesale receipt rates.',
+      callForWork: 'Call us now to book an appointment',
+      colService: 'Work Description',
+      colRate: 'Affordable Labor Rate',
+      colTime: 'Duration',
+      items: [
+        {
+          name: 'Ceiling Fan Installation & Hanging',
+          rate: '₹ 60 - ₹ 80 / Fan',
+          desc: 'Mounting, down-rod fitting & electronic regulator wiring',
+          time: '20-30 min',
+          badge: 'Most Popular',
+        },
+        {
+          name: 'Single Switch or Socket Replacement',
+          rate: '₹ 30 - ₹ 50 / Pc',
+          desc: 'Burnt switch renewal, tight connection & socket testing',
+          time: '15 min',
+        },
+        {
+          name: 'Modular Switchboard Wiring / Repair',
+          rate: '₹ 80 - ₹ 120 / Board',
+          desc: 'Internal board loop rewiring or fitting a new modular plate',
+          time: '30-45 min',
+        },
+        {
+          name: 'Concealed Point Wiring (House Wiring)',
+          rate: '₹ 90 - ₹ 120 / Point',
+          desc: 'Groove conduit & fire-retardant copper point wiring',
+          time: '1-2 days',
+          badge: 'Lowered Rate',
+        },
+        {
+          name: 'Bathroom Water Geyser Installation',
+          rate: '₹ 150 - ₹ 200 / Unit',
+          desc: 'Wall bracket mounting, 16A power socket wiring & earthing test',
+          time: '45 min',
+        },
+        {
+          name: 'Home Inverter & Battery Setup',
+          rate: '₹ 200 - ₹ 280 / Setup',
+          desc: 'Load segregation, thick battery lug cables & bypass switch',
+          time: '1-2 hrs',
+          badge: 'Affordable',
+        },
+        {
+          name: 'Home Water Pump / Monoblock Motor Wiring',
+          rate: '₹ 150 - ₹ 180 / Motor',
+          desc: 'Home water motor connections & capacitor verification',
+          time: '30-45 min',
+        },
+        {
+          name: 'Short Circuit Diagnostic & Tripping MCB Fix',
+          rate: '₹ 80 - ₹ 100',
+          desc: 'Tripping breaker isolation, neutral wire fix & quick power restore',
+          time: '30 min',
+        },
+        {
+          name: 'Safe Home Chemical / Copper Earthing',
+          rate: '₹ 450 - ₹ 600',
+          desc: 'Earthing pipe installation to protect families from electric shock',
+          time: '2-3 hrs',
+        },
+        {
+          name: 'Home Inspection Visit Fee (Beed City)',
+          rate: 'Just ₹ 80 - ₹ 100',
+          desc: 'Comprehensive doorstep wiring inspection (adjusted in bill for major jobs)',
+          time: '20 min',
+        },
+      ],
     },
 
     services: {
-      kicker: 'Our Capabilities & Services',
-      title: 'Complete Electrical Solutions Under One Roof',
-      subtitle: 'From modern concealed house wiring to heavy agricultural water pump setups, all work handled skillfully.',
+      kicker: 'Our Capabilities',
+      title: '100% Residential Doorstep Electrical Services',
+      subtitle: 'Complete electrical solutions for your home in one place at truly affordable rates.',
       tabs: {
         all: 'All Services',
-        houseWiring: 'House Wiring',
-        agriculture: 'Borewell Starter',
+        houseWiring: 'Home Wiring',
+        homeRepair: 'Fan, Geyser & Appliances',
         inverter: 'Inverter & Battery',
-        repairRewinding: 'Motor/Fan Rewinding',
-        commercial: 'Shops & 3-Phase',
+        waterMotor: 'Water Pump & Motor',
+        faultFinding: 'Short Circuit & Faults',
+        earthing: 'Safe Earthing',
       },
       startingFrom: 'Starts From',
       viewDetails: 'View Details',
-      bookService: 'Book Service',
+      bookService: 'Book Home Visit',
     },
 
     projects: {
-      kicker: 'Real Field Work & Photos',
-      title: 'Completed Electrical Work in Beed',
-      subtitle: 'Neat conduit lines, modular switchboards, and safe MCB distribution boards completed across Beed.',
-      sliderTitle: 'Dangerous Burnt Fuse Board vs Modern Modular MCB Panel',
-      sliderSubtitle: 'Drag the slider to see the before and after transformation',
-      beforeLabel: 'Before: Dangerous Burnt Fuse Box',
-      afterLabel: 'After: Modern Safe Modular MCB Box',
-      sliderNotice: 'Drag slider left and right to inspect',
-      inspectDetails: 'Inspect Work Details',
+      kicker: 'Our Real Work',
+      title: 'Residential Projects Completed in Beed City',
+      subtitle: 'Photographs and technical details of authentic home electrical work done by us.',
+      sliderTitle: 'Visual Transformation (Before / After)',
+      sliderSubtitle: 'Hazardous old wooden switchboard upgraded to safe Anchor Roma modular plate',
+      beforeLabel: 'Before: Hazardous Old Wooden Board',
+      afterLabel: 'After: Safe Anchor Roma Modular Board',
+      inspectDetails: 'Inspect Technical Scope',
+      clickToEnlarge: 'Click any project image to open in full-screen Lightbox',
     },
 
     estimator: {
-      kicker: 'Transparent Pricing in INR (₹)',
-      title: 'Instant Cost Estimator (₹)',
-      subtitle: 'Select your electrical requirement to get an immediate estimated budget.',
-      step1: '1. Select Electrical Service',
-      step2: '2. Property / Location Type',
-      step3: '3. Material Preference',
-      step4: '4. Service Urgency',
-      step5: '5. Additional Safety Add-ons',
-      estimatedTotal: 'Estimated Price Range',
-      rangeNote: 'Final quotation given on-site after inspecting site wiring and load.',
-      applyEstimate: 'Apply Estimate & Inquire',
+      kicker: 'Lowered Cost Calculator',
+      title: 'Estimate Your Home Electrical Bill',
+      subtitle: 'Choose your required home service to receive an immediate realistic labor estimate.',
+      step1: '1. Select Work Type',
+      step2: '2. Select Scale of Work',
+      step3: '3. Urgency',
+      step4: '4. Optional Safety Add-ons',
+      estimatedTotal: 'Estimated Fair Labor Cost',
+      rangeNote: 'Estimated labor charge for doorstep visit. Final quote verified on-site.',
+      applyEstimate: 'Apply to Booking Form',
+      callDirect: 'Call Directly to Book',
     },
 
     contact: {
-      kicker: 'Direct Contact & Visit Shop',
-      title: 'Call Us Directly or Book an Electrician',
-      subtitle: 'Available anytime for Beed city, MIDC, and nearby village farms.',
-      shopInfoTitle: 'Shop Address & Phone Numbers',
-      ownerName: 'Owner & Electrician: Shree Sadguru Electricals',
-      addressLabel: 'Address',
-      shopAddress: 'Shree Sadguru Electricals, Beed City, Beed District, Maharashtra (PIN: 431122)',
-      timingLabel: 'Timings',
-      shopTiming: '7:00 AM – 9:00 PM (All Days Open) · 24/7 Available for Emergencies',
-      areasCovered: 'Service Coverage',
-      areasList: 'Beed City, Subhash Road, Jalna Road, Nagar Road, Shivaji Chowk, Shahu Nagar, MIDC Beed, Ashti & Patoda area, and nearby villages',
-      formTitle: 'Book an Electrician Visit',
-      formSubtitle: 'Submit your request and we will call you back within 10–15 minutes.',
-      nameLabel: 'Your Full Name *',
-      phoneLabel: 'Mobile Number *',
-      villageOrAreaLabel: 'Address / Area / Village (Beed District)',
-      serviceLabel: 'Service Required',
-      urgencyLabel: 'Urgency Level',
-      detailsLabel: 'Describe Work (e.g., 2 room wiring / borewell starter tripping / inverter installation)',
-      attachPhoto: 'Attach Photo of Board / Meter (Optional)',
-      submitButton: 'Send Request & Book Electrician',
-      directCallTitle: 'For Urgent Needs, Call Now Directly:',
+      kicker: 'Direct Contact',
+      title: 'One Call & We Are at Your Doorstep!',
+      subtitle: 'Wherever you reside in Beed city, call or message us on WhatsApp for timely service.',
+      shopInfoTitle: 'Electrician Contact Information',
+      addressLabel: 'Address / Shop Base:',
+      shopAddress: 'Shree Sadguru Electricals, Beed City, District Beed, Maharashtra - 431122',
+      timingLabel: 'Operating Hours:',
+      shopTiming: '7:00 AM to 9:00 PM (Doorstep Service Available 7 Days a Week)',
+      areasCovered: 'Service Areas (Beed City & Periphery):',
+      areasList:
+        'Subhash Road, Jalna Road, Nagar Road, Shivaji Chowk, Shahu Nagar, Bindusara Area, Patoda Road, Karanja Chowk and all of Beed city.',
+      formTitle: 'Send Name & Address for Doorstep Visit',
+      formSubtitle: 'Submit your request and we will promptly call back to confirm arrival timing.',
+      nameLabel: 'Your Name *',
+      phoneLabel: 'Mobile Phone Number *',
+      villageOrAreaLabel: 'Home Address / Area in Beed City *',
+      serviceLabel: 'Service Required *',
+      detailsLabel: 'Describe your issue or timing preference',
+      submitButton: 'Request Doorstep Electrician Visit',
+      directCallTitle: 'For urgent assistance, call directly:',
     },
 
     faq: {
       kicker: 'Frequently Asked Questions',
-      title: 'Common Questions & Helpful Answers',
-      subtitle: 'Clear answers on wiring costs, MSEDCL meter connections, borewell pump protection, and inverters.',
+      title: 'Got Questions? We Have Answers',
+      subtitle: 'Clear details on our home visit policy, lowered pricing, and doorstep reliability.',
     },
 
     footer: {
-      about: 'Shree Sadguru Electricals is an independent electrical shop and electrician service based in Beed city, Maharashtra. We handle house wiring, farm borewell pumps, inverters, and emergency electrical repair with honest rates and original brand materials.',
-      quickLinks: 'Quick Links',
-      topServices: 'Popular Services',
-      directContact: 'Direct Mobile Numbers',
-      copyright: 'All Rights Reserved. Shree Sadguru Electricals, Beed, Maharashtra.',
-      disclaimer: 'Note: We are an independent local electrical shop in Beed. All jobs executed by experienced trade technicians.',
+      desc: 'Shree Sadguru Electricals - Your trusted independent residential home electrician in Beed city. Safe, high quality, and budget-friendly service.',
+      homeNotice: 'Note: We exclusively perform Residential Home Services; no commercial contracts are undertaken.',
+      copyright: 'All Rights Reserved © 2026 Shree Sadguru Electricals, Beed.',
+      phoneTitle: 'Direct Contact Numbers',
+      addressTitle: 'Address & Coverage',
     },
   },
 };

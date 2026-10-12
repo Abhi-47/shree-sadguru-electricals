@@ -1,7 +1,7 @@
 import React from 'react';
 import { SHOP_INFO } from '../data/mockData';
 import { translations, Language } from '../translations';
-import { Phone, MessageSquare, MapPin, Store } from 'lucide-react';
+import { Phone, MessageSquare, MapPin, Store, Shield } from 'lucide-react';
 
 export const Footer: React.FC<{ currentLang: Language }> = ({ currentLang }) => {
   const t = translations[currentLang];
@@ -13,61 +13,62 @@ export const Footer: React.FC<{ currentLang: Language }> = ({ currentLang }) => 
           {/* Shop Name & Identity */}
           <div className="md:col-span-1 space-y-3">
             <a href="#" className="flex items-center gap-2 text-base font-bold text-white hover:text-amber-400 transition-colors">
-              <span className="w-6 h-6 rounded bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 font-mono text-xs font-black">
+              <span className="w-7 h-7 rounded-lg bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 font-mono text-xs font-black">
                 ⚡
               </span>
-              <span>{currentLang === 'mr' ? SHOP_INFO.nameMr : SHOP_INFO.nameEn}</span>
+              <span className="font-sans font-bold">{currentLang === 'mr' ? SHOP_INFO.nameMr : SHOP_INFO.nameEn}</span>
             </a>
             <p className="text-slate-400 leading-relaxed text-xs">
-              {t.footer.about}
+              {t.footer.desc}
             </p>
-            <div className="pt-1 text-[11px] font-semibold text-amber-400">
-              {currentLang === 'mr' ? 'स्वतंत्र दुकान · बीड शहर (महाराष्ट्र)' : 'Independent Shop · Beed City (Maharashtra)'}
+            <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-[11px] font-medium text-amber-400">
+              {t.footer.homeNotice}
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-2.5">
             <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-              {t.footer.quickLinks}
+              {currentLang === 'mr' ? 'महत्त्वाच्या लिंक्स' : 'QUICK LINKS'}
             </h4>
             <ul className="space-y-2">
               <li><a href="#services" className="hover:text-amber-400 transition-colors">{t.nav.services}</a></li>
+              <li><a href="#rates" className="hover:text-amber-400 text-amber-400 font-semibold transition-colors">⚡ {t.nav.rates}</a></li>
               <li><a href="#projects" className="hover:text-amber-400 transition-colors">{t.nav.projects}</a></li>
               <li><a href="#estimator" className="hover:text-amber-400 transition-colors">{t.nav.estimator}</a></li>
               <li><a href="#contact" className="hover:text-amber-400 transition-colors">{t.nav.contact}</a></li>
             </ul>
           </div>
 
-          {/* Top Services */}
+          {/* Top Home Services */}
           <div className="space-y-2.5">
             <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-              {t.footer.topServices}
+              {currentLang === 'mr' ? 'घरगुती सेवा' : 'HOME SERVICES'}
             </h4>
             <ul className="space-y-2">
               <li>
                 <a href="#services" className="hover:text-amber-400 transition-colors">
-                  {currentLang === 'mr' ? 'घरगुती कन्सिल्ड वायरिंग' : 'House Concealed Wiring'}
+                  {currentLang === 'mr' ? 'सीलिंग फॅन फिटिंग (₹६० पासून)' : 'Ceiling Fan Fitting (From ₹60)'}
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-amber-400 transition-colors">
-                  {currentLang === 'mr' ? 'शेती बोरवेल स्टार्टर व ऑटो-स्विच' : 'Borewell Starter & Auto-Switch'}
+                  {currentLang === 'mr' ? 'घरगुती कन्सिल्ड पॉईंट वायरिंग (₹९०/पॉईंट)' : 'Concealed Point Wiring (₹90/pt)'}
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-amber-400 transition-colors">
-                  {currentLang === 'mr' ? 'इन्व्हर्टर व टॉल ट्युब्युलर बॅटरी' : 'Inverter & Battery Backup'}
+                  {currentLang === 'mr' ? 'बाथरूम गिझर फिटिंग (₹१५०)' : 'Bathroom Geyser Fitting (₹150)'}
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-amber-400 transition-colors">
-                  {currentLang === 'mr' ? 'सबमर्सिबल व फॅन कॉपर रिवाइंडिंग' : 'Motor & Fan Copper Rewinding'}
+                  {currentLang === 'mr' ? 'इन्व्हर्टर व बॅटरी कनेक्शन (₹२००)' : 'Inverter & Battery Setup (₹200)'}
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-amber-400 transition-colors">
-                  {currentLang === 'mr' ? '३-फेज गिरणी व कार्यशाळा कनेक्शन' : '3-Phase Flour Mill Power'}
+                  {currentLang === 'mr' ? 'पाण्याची मोटर व ऑटो फ्लोट स्विच' : 'Water Motor & Auto Float'}
                 </a>
               </li>
             </ul>
@@ -76,7 +77,7 @@ export const Footer: React.FC<{ currentLang: Language }> = ({ currentLang }) => 
           {/* Direct Mobile Contacts */}
           <div className="space-y-2.5">
             <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-              {t.footer.directContact}
+              {t.footer.phoneTitle}
             </h4>
             <div className="space-y-2">
               <div>
@@ -97,7 +98,7 @@ export const Footer: React.FC<{ currentLang: Language }> = ({ currentLang }) => 
               </div>
               <div className="pt-1">
                 <span className="text-[11px] text-slate-500 block">
-                  {currentLang === 'mr' ? 'पत्ता:' : 'Address:'}
+                  {t.footer.addressTitle}
                 </span>
                 <span className="text-slate-300 text-[11px]">{SHOP_INFO.address}</span>
               </div>
@@ -108,10 +109,12 @@ export const Footer: React.FC<{ currentLang: Language }> = ({ currentLang }) => 
         {/* Bottom Legal & Safety Strip */}
         <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-400 text-[11px]">
           <div>
-            © {new Date().getFullYear()} {currentLang === 'mr' ? SHOP_INFO.nameMr : SHOP_INFO.nameEn}, बीड (महाराष्ट्र).
+            {t.footer.copyright}
           </div>
-          <div className="text-slate-400 italic">
-            {t.footer.disclaimer}
+          <div className="text-amber-400 font-medium">
+            {currentLang === 'mr'
+              ? 'बीड शहरातील नागरिकांसाठी घरपोच सेवा • वेळेवर हजेरी व वाजवी दर'
+              : 'Doorstep Service for Beed City • Punctual & Affordable'}
           </div>
         </div>
       </div>

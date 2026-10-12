@@ -1,12 +1,10 @@
 export type ServiceCategory =
-  | 'residential'
-  | 'commercial'
-  | 'agriculture'
+  | 'house_wiring'
+  | 'home_repair'
   | 'inverter'
-  | 'repairRewinding'
-  | 'emergency'
-  | 'smart_home'
-  | 'ev_chargers';
+  | 'water_motor'
+  | 'fault_finding'
+  | 'earthing';
 
 export interface ServiceItem {
   id: string;
